@@ -28,6 +28,7 @@ public class AveragePriceMessage implements Message {
 
     AvgPriceMessageService avgPriceMessageService;
     Map<String, String> mapOfCities;
+    final String ROOT_URL = "https://www.avito.ru/";
 
     @Autowired
     public AveragePriceMessage(AvgPriceMessageService avgPriceMessageService, Map<String, String> mapOfCities) {
@@ -50,7 +51,8 @@ public class AveragePriceMessage implements Message {
 
         if (mapOfCities.containsKey(city)) {
             String cityInEnglish = mapOfCities.get(city);
-            String URL = "https://www.avito.ru/" + cityInEnglish + "?q=" + product;
+            // String URL = "https://www.avito.ru/" + cityInEnglish + "?q=" + product;
+            String URL = ROOT_URL + cityInEnglish + "?q=" + product;
 
             double averagePrice = avgPriceMessageService.calculateAvgPrice(city, cityInEnglish, product, URL);
 
@@ -78,5 +80,10 @@ public class AveragePriceMessage implements Message {
 
         keyboard.setKeyboard(rowList);
         return keyboard;
+    }
+
+    @Override
+    public String getId() {
+        return "найти среднюю цену";
     }
 }

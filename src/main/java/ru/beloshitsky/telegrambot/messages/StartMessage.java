@@ -14,6 +14,7 @@ public class StartMessage implements Message {
 
     @Override
     public SendMessage getMessage(String text, String chatId) {
+        System.out.println("StartMessage");
 
         // Кнопка
         KeyboardButton button = new KeyboardButton();
@@ -33,5 +34,10 @@ public class StartMessage implements Message {
                         "Питер Samsung Galaxy S20");
         message.setReplyMarkup(replyKeyboardMarkup);
         return message;
+    }
+
+    @Override
+    public String getId() {
+        return "/start";
     }
 }

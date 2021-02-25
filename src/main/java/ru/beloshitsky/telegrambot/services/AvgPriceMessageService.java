@@ -1,11 +1,15 @@
 package ru.beloshitsky.telegrambot.services;
 
+import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.Setter;
+import lombok.experimental.FieldDefaults;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.select.Elements;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import ru.beloshitsky.telegrambot.configuration.BotConfig;
 import ru.beloshitsky.telegrambot.messages.AveragePriceMessage;
 
 import java.io.IOException;
@@ -14,20 +18,17 @@ import java.util.Collection;
 import java.util.List;
 import java.util.stream.Collectors;
 
+@FieldDefaults(level = AccessLevel.PRIVATE)
 @Service
-@Getter
-@Setter
 public class AvgPriceMessageService {
 
-    int priceThreshold;
-    int pagesLimit;
-    int delayBetweenConnections;
+    @Autowired
+    BotConfig botConfig;
 
     public double calculateAvgPrice(String city, String cityInEnglish, String product, String URL)
             throws IOException, InterruptedException {
 
         System.out.println("CONTAINS CITY");
-
 
         Document htmlDoc;
         synchronized (AveragePriceMessage.class) {
@@ -35,14 +36,13 @@ public class AvgPriceMessageService {
             long start = System.currentTimeMillis();
             htmlDoc = Jsoup.connect(URL).get();
             long wastedTime = System.currentTimeMillis() - start;
-            Thread.sleep(wastedTime >= delayBetweenConnections
+            Thread.sleep(wastedTime >= botConfig.getDelayBetweenConnections()
                     ? 0
-                    : delayBetweenConnections - wastedTime);
+                    : botConfig.getDelayBetweenConnections() - wastedTime);
         }
 
         Elements numOfPages = htmlDoc.select("span[data-marker~=page[(]\\d+[)]]");
         double averagePrice = calculateAvgOnAllPages(product, cityInEnglish, numOfPages);
-
         return averagePrice;
     }
 
@@ -54,8 +54,8 @@ public class AvgPriceMessageService {
         int lastPage = pages.size() - 1;
         List<List<Double>> listOfResultsOnEveryPage = new ArrayList<>();
 
-        if (lastPage > pagesLimit) {
-            lastPage = pagesLimit;
+        if (lastPage > botConfig.getPagesLimit()) {
+            lastPage = botConfig.getPagesLimit();
         }
         for (int i = 1; i <= lastPage; i++) {
             List<Double> listOfPricesOnPage = getListOfPricesOnPage(String.valueOf(i), cityInEnglish, product);
@@ -83,9 +83,9 @@ public class AvgPriceMessageService {
             long start = System.currentTimeMillis();
             htmlDoc = Jsoup.connect(URL).data("p", page, "q", product).get();
             long wastedTime = System.currentTimeMillis() - start;
-            Thread.sleep(wastedTime >= delayBetweenConnections
+            Thread.sleep(wastedTime >= botConfig.getDelayBetweenConnections()
                     ? 0
-                    : delayBetweenConnections - wastedTime);
+                    : botConfig.getDelayBetweenConnections() - wastedTime);
         }
         Elements elementsInYourCity = htmlDoc.select("div[data-marker=catalog-serp]");
         Elements elementsPrices = elementsInYourCity.select("span[class~=price-text-.+]");
@@ -113,7 +113,7 @@ public class AvgPriceMessageService {
                 .average()
                 .getAsDouble();
 
-        double deletionThreshold = (averagePriceCommon / 100) * priceThreshold;
+        double deletionThreshold = (averagePriceCommon / 100) * botConfig.getPriceThreshold();
         return listOfPrices
                 .stream()
                 .filter(p -> (averagePriceCommon - p) < deletionThreshold)
