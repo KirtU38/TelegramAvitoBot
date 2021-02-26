@@ -14,7 +14,6 @@ public class StartMessage implements Message {
 
     @Override
     public SendMessage getMessage(String text, String chatId) {
-        System.out.println("StartMessage");
 
         // Кнопка
         KeyboardButton button = new KeyboardButton();

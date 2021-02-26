@@ -5,8 +5,8 @@ import lombok.Setter;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
-@Component
 @Getter
+@Component
 public class BotConfig {
 
     @Value("${telegrambot.token}")
@@ -21,4 +21,6 @@ public class BotConfig {
     int delayBetweenConnections;
     @Value("${telegrambot.citiesFile}")
     String citiesFile;
+    @Value("${telegrambot.rootURL}")
+    String rootURL;
 }

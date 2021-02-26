@@ -16,38 +16,17 @@ import java.nio.file.Paths;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 
-@Configuration
 @ComponentScan("ru/beloshitsky/telegrambot")
 @PropertySource("classpath:application.properties")
+@Configuration
 public class SpringConfig {
 
-    @Bean
-    public Bot bot(BotService botService, BotConfig botConfig)
-            throws TelegramApiException {
-
-        Bot bot = new Bot();
-        bot.setBotService(botService);
-        bot.setBotToken(botConfig.getToken());
-        bot.setBotUserName(botConfig.getUserName());
-        TelegramBotsApi botsApi = new TelegramBotsApi(DefaultBotSession.class);
-        botsApi.registerBot(bot);
-        return bot;
-    }
-
-    // @Bean
-    // public AvgPriceMessageService avgPriceMessageService(BotConfig botConfig) {
-    //
-    //     AvgPriceMessageService avgPriceMessageService = new AvgPriceMessageService();
-    //     avgPriceMessageService.setPriceThreshold(botConfig.getPriceThreshold());
-    //     avgPriceMessageService.setPagesLimit(botConfig.getPagesLimit());
-    //     avgPriceMessageService.setDelayBetweenConnections(botConfig.getDelayBetweenConnections());
-    //     return avgPriceMessageService;
-    // }
-
-    @Bean
+    @Bean("mapOfCities")
     public Map<String, String> mapOfCities(BotConfig botConfig)
             throws IOException {
 
@@ -61,10 +40,8 @@ public class SpringConfig {
     }
 
     @Bean("mapOfMessages")
-    public Map<String, Message> mapOfMessages(List<Message> listOfMessages)
-            throws IOException {
+    public Map<String, Message> mapOfMessages(List<Message> listOfMessages) {
 
-        Map<String, Message> map  = listOfMessages.stream().collect(Collectors.toMap(Message::getId, Function.identity()));
-        return map;
+        return listOfMessages.stream().collect(Collectors.toMap(Message::getId, Function.identity()));
     }
 }

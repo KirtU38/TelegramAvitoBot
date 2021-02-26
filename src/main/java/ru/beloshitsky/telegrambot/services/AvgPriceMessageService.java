@@ -1,16 +1,11 @@
 package ru.beloshitsky.telegrambot.services;
 
 import lombok.AccessLevel;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.RequiredArgsConstructor;
 import lombok.experimental.FieldDefaults;
-import org.jsoup.Jsoup;
-import org.jsoup.nodes.Document;
-import org.jsoup.select.Elements;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import ru.beloshitsky.telegrambot.configuration.BotConfig;
-import ru.beloshitsky.telegrambot.messages.AveragePriceMessage;
+import ru.beloshitsky.telegrambot.parsers.AvitoHTMLParser;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -18,49 +13,38 @@ import java.util.Collection;
 import java.util.List;
 import java.util.stream.Collectors;
 
-@FieldDefaults(level = AccessLevel.PRIVATE)
+@RequiredArgsConstructor
+@FieldDefaults(level = AccessLevel.PRIVATE, makeFinal = true)
 @Service
 public class AvgPriceMessageService {
 
-    @Autowired
     BotConfig botConfig;
+    AvitoHTMLParser avitoHTMLParser;
 
-    public double calculateAvgPrice(String city, String cityInEnglish, String product, String URL)
+    public double calculateAvgPrice(String cityInEnglish, String product)
             throws IOException, InterruptedException {
 
-        System.out.println("CONTAINS CITY");
-
-        Document htmlDoc;
-        synchronized (AveragePriceMessage.class) {
-            System.out.println("GETTING URL");
-            long start = System.currentTimeMillis();
-            htmlDoc = Jsoup.connect(URL).get();
-            long wastedTime = System.currentTimeMillis() - start;
-            Thread.sleep(wastedTime >= botConfig.getDelayBetweenConnections()
-                    ? 0
-                    : botConfig.getDelayBetweenConnections() - wastedTime);
-        }
-
-        Elements numOfPages = htmlDoc.select("span[data-marker~=page[(]\\d+[)]]");
-        double averagePrice = calculateAvgOnAllPages(product, cityInEnglish, numOfPages);
-        return averagePrice;
+        String URLCityAndProduct = botConfig.getRootURL() + cityInEnglish + "?q=" + product;
+        int numOfPages = avitoHTMLParser.getNumOfPages(URLCityAndProduct);
+        return getAvgOnAllPages(product, cityInEnglish, numOfPages);
     }
 
-    private double calculateAvgOnAllPages(String product, String cityInEnglish, Elements pages)
+    private double getAvgOnAllPages(String product, String cityInEnglish, int numOfPages)
             throws InterruptedException, IOException {
 
-        System.out.println("GET AVERAGE PRICE");
-
-        int lastPage = pages.size() - 1;
-        List<List<Double>> listOfResultsOnEveryPage = new ArrayList<>();
-
-        if (lastPage > botConfig.getPagesLimit()) {
-            lastPage = botConfig.getPagesLimit();
+        if (numOfPages >= botConfig.getPagesLimit()) {
+            numOfPages = botConfig.getPagesLimit();
         }
-        for (int i = 1; i <= lastPage; i++) {
-            List<Double> listOfPricesOnPage = getListOfPricesOnPage(String.valueOf(i), cityInEnglish, product);
-            listOfResultsOnEveryPage.add(listOfPricesOnPage);
+        List<List<Double>> listOfPricesOnEveryPage = new ArrayList<>();
+        for (int page = 1; page < numOfPages; page++) {
+            String URLCityPageProduct = botConfig.getRootURL() + cityInEnglish + "?p=" + page + "&q=" + product;
+            List<Double> listOfPricesOnPage = avitoHTMLParser.getListOfPricesFromURL(URLCityPageProduct);
+            listOfPricesOnEveryPage.add(listOfPricesOnPage);
         }
+        return calculateAvgPriceFromAllPages(listOfPricesOnEveryPage);
+    }
+
+    private double calculateAvgPriceFromAllPages(List<List<Double>> listOfResultsOnEveryPage) {
 
         List<Double> listOfPricesFromAllPages = listOfResultsOnEveryPage
                 .stream()
@@ -68,53 +52,15 @@ public class AvgPriceMessageService {
                 .flatMap(Collection::stream)
                 .collect(Collectors.toList());
 
-        return calculateAvgPriceFromList(listOfPricesFromAllPages);
-    }
-
-    public List<Double> getListOfPricesOnPage(String page, String cityInEnglish, String product)
-            throws InterruptedException, IOException {
-
-        List<Double> listOfPrices = null;
-        String URL = "https://www.avito.ru/" + cityInEnglish;
-        int sizeOfPrices;
-        Document htmlDoc;
-
-        synchronized (AveragePriceMessage.class) {
-            long start = System.currentTimeMillis();
-            htmlDoc = Jsoup.connect(URL).data("p", page, "q", product).get();
-            long wastedTime = System.currentTimeMillis() - start;
-            Thread.sleep(wastedTime >= botConfig.getDelayBetweenConnections()
-                    ? 0
-                    : botConfig.getDelayBetweenConnections() - wastedTime);
-        }
-        Elements elementsInYourCity = htmlDoc.select("div[data-marker=catalog-serp]");
-        Elements elementsPrices = elementsInYourCity.select("span[class~=price-text-.+]");
-        sizeOfPrices = elementsPrices.size();
-
-        // Если есть предложения именно в твоём городе
-        if (elementsPrices.size() > 0) {
-            // Парсим документ в Лист цен
-            listOfPrices = elementsPrices
-                    .stream()
-                    .filter(e -> e.text().matches("\\d+.+"))
-                    .map(e -> Double.parseDouble(e.text().replaceAll("\\W", "")))
-                    .collect(Collectors.toList());
-        }
-
-        System.out.println(sizeOfPrices + " товаров " + Thread.currentThread().getName());
-        return listOfPrices;
-    }
-
-    private double calculateAvgPriceFromList(List<Double> listOfPrices) {
-
-        double averagePriceCommon = listOfPrices
+        double averagePriceCommon = listOfPricesFromAllPages
                 .stream()
                 .mapToDouble(e -> e)
                 .average()
                 .getAsDouble();
 
         double deletionThreshold = (averagePriceCommon / 100) * botConfig.getPriceThreshold();
-        return listOfPrices
+
+        return listOfPricesFromAllPages
                 .stream()
                 .filter(p -> (averagePriceCommon - p) < deletionThreshold)
                 .mapToDouble(p -> p)

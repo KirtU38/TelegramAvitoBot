@@ -1,44 +1,34 @@
 package ru.beloshitsky.telegrambot.messages;
 
 import lombok.AccessLevel;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.RequiredArgsConstructor;
 import lombok.SneakyThrows;
 import lombok.experimental.FieldDefaults;
-import org.jsoup.Jsoup;
-import org.jsoup.nodes.Document;
-import org.jsoup.select.Elements;
-import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
 import org.telegram.telegrambots.meta.api.objects.replykeyboard.InlineKeyboardMarkup;
 import org.telegram.telegrambots.meta.api.objects.replykeyboard.buttons.InlineKeyboardButton;
+import ru.beloshitsky.telegrambot.configuration.BotConfig;
 import ru.beloshitsky.telegrambot.services.AvgPriceMessageService;
 
-import java.io.IOException;
-import java.util.*;
-import java.util.stream.Collectors;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Locale;
+import java.util.Map;
 
 
-@Getter
-@Setter
-@FieldDefaults(level = AccessLevel.PRIVATE)
+@RequiredArgsConstructor
+@FieldDefaults(level = AccessLevel.PRIVATE, makeFinal = true)
 @Component
 public class AveragePriceMessage implements Message {
 
-    AvgPriceMessageService avgPriceMessageService;
     Map<String, String> mapOfCities;
-    final String ROOT_URL = "https://www.avito.ru/";
-
-    @Autowired
-    public AveragePriceMessage(AvgPriceMessageService avgPriceMessageService, Map<String, String> mapOfCities) {
-        this.avgPriceMessageService = avgPriceMessageService;
-        this.mapOfCities = mapOfCities;
-    }
+    AvgPriceMessageService avgPriceMessageService;
+    BotConfig botConfig;
 
     @SneakyThrows
     public SendMessage getMessage(String text, String chatId) {
-        System.out.println("AveragePriceMessage");
 
         SendMessage message = new SendMessage();
         message.setChatId(chatId);
@@ -46,18 +36,14 @@ public class AveragePriceMessage implements Message {
         String[] tokens = text.toLowerCase(Locale.ROOT).trim().split("\\s", 2);
         String city = tokens[0];
         String product = tokens[1];
-        System.out.println(Arrays.toString(tokens));
         // String product = mapOfCities.containsKey(city) ? tokens[1] : "";
 
         if (mapOfCities.containsKey(city)) {
             String cityInEnglish = mapOfCities.get(city);
-            // String URL = "https://www.avito.ru/" + cityInEnglish + "?q=" + product;
-            String URL = ROOT_URL + cityInEnglish + "?q=" + product;
-
-            double averagePrice = avgPriceMessageService.calculateAvgPrice(city, cityInEnglish, product, URL);
-
+            double averagePrice = avgPriceMessageService.calculateAvgPrice(cityInEnglish, product);
+            String URLCityAndProduct = botConfig.getRootURL() + cityInEnglish + "?q=" + product;
             message.setText(String.format("Средняя цена в городе %s = %,.0f ₽", city, averagePrice));
-            message.setReplyMarkup(getInlineKeyboardMarkup(URL));
+            message.setReplyMarkup(getInlineKeyboardMarkup(URLCityAndProduct));
         } else {
             message.setText("Нет такого города");
         }
@@ -87,3 +73,4 @@ public class AveragePriceMessage implements Message {
         return "найти среднюю цену";
     }
 }
+

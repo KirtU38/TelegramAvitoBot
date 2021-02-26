@@ -2,10 +2,12 @@ package ru.beloshitsky.telegrambot.services;
 
 import lombok.AccessLevel;
 import lombok.Getter;
+import lombok.RequiredArgsConstructor;
 import lombok.Setter;
 import lombok.experimental.FieldDefaults;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Service;
 import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
 import org.telegram.telegrambots.meta.api.objects.Update;
@@ -15,48 +17,38 @@ import ru.beloshitsky.telegrambot.messages.HelpMessage;
 import ru.beloshitsky.telegrambot.messages.Message;
 import ru.beloshitsky.telegrambot.messages.StartMessage;
 
+import javax.annotation.PostConstruct;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
+import java.util.function.Function;
+import java.util.stream.Collectors;
 
-@Getter
-@Setter
-@FieldDefaults(level = AccessLevel.PRIVATE)
+@FieldDefaults(level = AccessLevel.PRIVATE, makeFinal = true)
 @Service
 public class BotService {
 
-
-    @Autowired
-    @Qualifier("mapOfMessages")
     Map<String, Message> mapOfMessages;
 
-    public SendMessage processUpdate(Update update)
-            throws InterruptedException, TelegramApiException, IOException {
+    @Autowired
+    public BotService(@Qualifier("mapOfMessages") Map<String, Message> mapOfMessages) {
+        this.mapOfMessages = mapOfMessages;
+    }
 
-        mapOfMessages.values().forEach(System.out::println);
-        mapOfMessages.keySet().forEach(System.out::println);
+    public SendMessage processUpdate(Update update) {
 
         SendMessage message = null;
         if (update.hasMessage() && update.getMessage().hasText()) {
-            System.out.println("BotService start");
             String text = update.getMessage().getText().toLowerCase(Locale.ROOT);
             String chatId = String.valueOf(update.getMessage().getChatId());
             String command = text;
-            System.out.println(text);
-            System.out.println(command);
-
             if (matchesCityAndProduct(command)) {
-                System.out.println("DA");
                 command = "найти среднюю цену";
             }
-            System.out.println("В мапу");
             message = mapOfMessages.get(command).getMessage(text, chatId);
-            System.out.println(mapOfMessages.get(command));
-
         }
-        System.out.println("END");
         return message;
     }
 
