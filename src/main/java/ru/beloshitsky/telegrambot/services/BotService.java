@@ -5,6 +5,9 @@ import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import lombok.Setter;
 import lombok.experimental.FieldDefaults;
+import lombok.extern.slf4j.Slf4j;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
@@ -26,6 +29,7 @@ import java.util.Map;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 
+@Slf4j
 @FieldDefaults(level = AccessLevel.PRIVATE, makeFinal = true)
 @Service
 public class BotService {
@@ -41,12 +45,15 @@ public class BotService {
 
         SendMessage message = null;
         if (update.hasMessage() && update.getMessage().hasText()) {
+
             String text = update.getMessage().getText().toLowerCase(Locale.ROOT);
             String chatId = String.valueOf(update.getMessage().getChatId());
             String command = text;
             if (matchesCityAndProduct(command)) {
                 command = "найти среднюю цену";
             }
+            log.info("New message from User:{}, chatId: {},  with text: {}",
+                    update.getMessage().getFrom(), chatId, text);
             message = mapOfMessages.get(command).getMessage(text, chatId);
         }
         return message;
