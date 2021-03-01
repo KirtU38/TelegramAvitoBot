@@ -21,48 +21,48 @@ import java.util.stream.Collectors;
 @FieldDefaults(level = AccessLevel.PRIVATE, makeFinal = true)
 @Component
 public class AvitoHTMLParser {
+  BotConfig botConfig;
+  AvitoTagsParser tagsParser;
+  Logger logError;
 
-    BotConfig botConfig;
-    AvitoTagsParser tagsParser;
-    Logger logError;
+  public List<Double> getListOfPricesFromURL(String URLCityPageProduct) {
+    Document htmlDoc = getHTML(URLCityPageProduct);
+    Elements elementsPrices = tagsParser.selectPrices(htmlDoc);
+    List<Double> listOfPricesOnPage = null;
 
-    public List<Double> getListOfPricesFromURL(String URLCityPageProduct) {
-
-        Document htmlDoc = getHTML(URLCityPageProduct);
-        Elements elementsPrices = tagsParser.selectPrices(htmlDoc);
-        List<Double> listOfPricesOnPage = null;
-        if (elementsPrices.size() > 0) {
-            listOfPricesOnPage = elementsPrices
-                    .stream()
-                    .filter(e -> e.text().matches("\\d+.+"))
-                    .map(e -> Double.parseDouble(e.text().replaceAll("\\W", "")))
-                    .collect(Collectors.toList());
-        }
-        return listOfPricesOnPage;
+    if (elementsPrices.size() > 0) {
+      listOfPricesOnPage =
+          elementsPrices.stream()
+              .filter(e -> e.text().matches("\\d+.+"))
+              .map(e -> Double.parseDouble(e.text().replaceAll("\\W", "")))
+              .collect(Collectors.toList());
     }
+    return listOfPricesOnPage;
+  }
 
-    private Document getHTML(String URL) {
+  private Document getHTML(String URL) {
+    Document htmlDoc = null;
+    log.info(URL);
 
-        log.info(URL);
-        Document htmlDoc = null;
-        synchronized (AveragePriceMessage.class) {
-            long start = System.currentTimeMillis();
-            try {
-                htmlDoc = Jsoup.connect(URL).get();
-            } catch (IOException e) {
-                logError.error("Couldn't fetch the URL");
-                e.printStackTrace();
-            }
-            long wastedTime = System.currentTimeMillis() - start;
-            try {
-                Thread.sleep(wastedTime >= botConfig.getDelayBetweenConnections()
-                        ? 0
-                        : botConfig.getDelayBetweenConnections() - wastedTime);
-            } catch (InterruptedException e) {
-                logError.error("Thread was interrupted");
-                e.printStackTrace();
-            }
-        }
-        return htmlDoc;
+    synchronized (AveragePriceMessage.class) {
+      long start = System.currentTimeMillis();
+      try {
+        htmlDoc = Jsoup.connect(URL).get();
+      } catch (IOException e) {
+        logError.error("Couldn't fetch the URL");
+        e.printStackTrace();
+      }
+      long wastedTime = System.currentTimeMillis() - start;
+      try {
+        Thread.sleep(
+            wastedTime >= botConfig.getDelayBetweenConnections()
+                ? 0
+                : botConfig.getDelayBetweenConnections() - wastedTime);
+      } catch (InterruptedException e) {
+        logError.error("Thread was interrupted");
+        e.printStackTrace();
+      }
     }
+    return htmlDoc;
+  }
 }

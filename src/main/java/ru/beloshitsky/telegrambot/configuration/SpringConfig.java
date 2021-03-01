@@ -1,6 +1,5 @@
 package ru.beloshitsky.telegrambot.configuration;
 
-
 import lombok.extern.slf4j.Slf4j;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -25,26 +24,27 @@ import java.util.stream.Collectors;
 @Configuration
 public class SpringConfig {
 
-    @Bean("mapOfCities")
-    public Map<String, String> mapOfCities(BotConfig botConfig) throws IOException {
+  @Bean("mapOfCities")
+  public Map<String, String> mapOfCities(BotConfig botConfig) throws IOException {
+    String citiesFile = botConfig.getCitiesFile();
+    HashMap<String, String> mapOfCities = new HashMap<>();
 
-        String citiesFile = botConfig.getCitiesFile();
-        HashMap<String, String> mapOfCities = new HashMap<>();
-        Files.readAllLines(Paths.get(citiesFile)).forEach(e -> {
-            String[] tokens = e.split("=", 2);
-            mapOfCities.put(tokens[0], tokens[1]);
-        });
-        return mapOfCities;
-    }
+    Files.readAllLines(Paths.get(citiesFile))
+        .forEach(
+            e -> {
+              String[] tokens = e.split("=", 2);
+              mapOfCities.put(tokens[0], tokens[1]);
+            });
+    return mapOfCities;
+  }
 
-    @Bean("mapOfMessages")
-    public Map<String, Message> mapOfMessages(List<Message> listOfMessages) {
+  @Bean("mapOfMessages")
+  public Map<String, Message> mapOfMessages(List<Message> listOfMessages) {
+    return listOfMessages.stream().collect(Collectors.toMap(Message::getId, Function.identity()));
+  }
 
-        return listOfMessages.stream().collect(Collectors.toMap(Message::getId, Function.identity()));
-    }
-
-    @Bean
-    public Logger logError() {
-        return LoggerFactory.getLogger("errorLogger");
-    }
+  @Bean
+  public Logger logError() {
+    return LoggerFactory.getLogger("errorLogger");
+  }
 }

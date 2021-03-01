@@ -1,6 +1,8 @@
 package ru.beloshitsky.telegrambot.botapi;
 
-import lombok.*;
+import lombok.AccessLevel;
+import lombok.RequiredArgsConstructor;
+import lombok.SneakyThrows;
 import lombok.experimental.FieldDefaults;
 import lombok.extern.slf4j.Slf4j;
 import org.slf4j.Logger;
@@ -21,37 +23,35 @@ import javax.annotation.PostConstruct;
 @FieldDefaults(level = AccessLevel.PRIVATE, makeFinal = true)
 @Component
 public class Bot extends TelegramLongPollingBot {
+  BotService botService;
+  BotConfig botConfig;
+  Logger logError;
 
-    BotService botService;
-    BotConfig botConfig;
-    Logger logError;
+  @Override
+  public String getBotUsername() {
+    return botConfig.getUserName();
+  }
 
-    @Override
-    public String getBotUsername() {
-        return botConfig.getUserName();
+  @Override
+  public String getBotToken() {
+    return botConfig.getToken();
+  }
+
+  @SneakyThrows
+  @Override
+  public void onUpdateReceived(Update update) {
+    SendMessage message = botService.processUpdate(update);
+    execute(message);
+  }
+
+  @PostConstruct
+  public void registerBot() {
+    try {
+      TelegramBotsApi botsApi = new TelegramBotsApi(DefaultBotSession.class);
+      botsApi.registerBot(this);
+    } catch (TelegramApiException e) {
+      logError.error("Couldn't register a Bot");
+      e.printStackTrace();
     }
-
-    @Override
-    public String getBotToken() {
-        return botConfig.getToken();
-    }
-
-    @SneakyThrows
-    @Override
-    public void onUpdateReceived(Update update) {
-        SendMessage message = botService.processUpdate(update);
-        execute(message);
-    }
-
-    @PostConstruct
-    public void registerBot() {
-        TelegramBotsApi botsApi = null;
-        try {
-            botsApi = new TelegramBotsApi(DefaultBotSession.class);
-            botsApi.registerBot(this);
-        } catch (TelegramApiException e) {
-            logError.error("Couldn't register a Bot");
-            e.printStackTrace();
-        }
-    }
+  }
 }
