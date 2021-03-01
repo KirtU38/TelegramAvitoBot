@@ -57,3 +57,4 @@
 новосибирск=novosibirsk
 новосиб=novosibirsk
 сиб=novosibirsk
+горный=gorno-altaysk

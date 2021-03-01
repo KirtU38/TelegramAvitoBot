@@ -3,9 +3,11 @@ package ru.beloshitsky.telegrambot.parsers;
 import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
 import lombok.experimental.FieldDefaults;
+import lombok.extern.slf4j.Slf4j;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.select.Elements;
+import org.slf4j.Logger;
 import org.springframework.stereotype.Component;
 import ru.beloshitsky.telegrambot.configuration.BotConfig;
 import ru.beloshitsky.telegrambot.messages.AveragePriceMessage;
@@ -14,25 +16,20 @@ import java.io.IOException;
 import java.util.List;
 import java.util.stream.Collectors;
 
+@Slf4j
 @RequiredArgsConstructor
 @FieldDefaults(level = AccessLevel.PRIVATE, makeFinal = true)
 @Component
 public class AvitoHTMLParser {
 
     BotConfig botConfig;
+    AvitoTagsParser tagsParser;
+    Logger logError;
 
-    public int getNumOfPages(String URLCityAndProduct) throws InterruptedException, IOException {
-
-        Document htmlDoc = getHTML(URLCityAndProduct);
-        Elements pages = htmlDoc.select("span[data-marker~=page[(]\\d+[)]]");
-        return pages.size();
-    }
-
-    public List<Double> getListOfPricesFromURL(String URLCityPageProduct) throws IOException, InterruptedException {
+    public List<Double> getListOfPricesFromURL(String URLCityPageProduct) {
 
         Document htmlDoc = getHTML(URLCityPageProduct);
-        Elements elementsInYourCity = htmlDoc.select("div[data-marker=catalog-serp]");
-        Elements elementsPrices = elementsInYourCity.select("span[class~=price-text-.+]");
+        Elements elementsPrices = tagsParser.selectPrices(htmlDoc);
         List<Double> listOfPricesOnPage = null;
         if (elementsPrices.size() > 0) {
             listOfPricesOnPage = elementsPrices
@@ -44,15 +41,27 @@ public class AvitoHTMLParser {
         return listOfPricesOnPage;
     }
 
-    private Document getHTML(String URL) throws IOException, InterruptedException {
-        Document htmlDoc;
+    private Document getHTML(String URL) {
+
+        log.info(URL);
+        Document htmlDoc = null;
         synchronized (AveragePriceMessage.class) {
             long start = System.currentTimeMillis();
-            htmlDoc = Jsoup.connect(URL).get();
+            try {
+                htmlDoc = Jsoup.connect(URL).get();
+            } catch (IOException e) {
+                logError.error("Couldn't fetch the URL");
+                e.printStackTrace();
+            }
             long wastedTime = System.currentTimeMillis() - start;
-            Thread.sleep(wastedTime >= botConfig.getDelayBetweenConnections()
-                    ? 0
-                    : botConfig.getDelayBetweenConnections() - wastedTime);
+            try {
+                Thread.sleep(wastedTime >= botConfig.getDelayBetweenConnections()
+                        ? 0
+                        : botConfig.getDelayBetweenConnections() - wastedTime);
+            } catch (InterruptedException e) {
+                logError.error("Thread was interrupted");
+                e.printStackTrace();
+            }
         }
         return htmlDoc;
     }

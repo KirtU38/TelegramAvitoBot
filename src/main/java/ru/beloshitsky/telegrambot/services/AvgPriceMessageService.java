@@ -3,6 +3,7 @@ package ru.beloshitsky.telegrambot.services;
 import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
 import lombok.experimental.FieldDefaults;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import ru.beloshitsky.telegrambot.configuration.BotConfig;
 import ru.beloshitsky.telegrambot.parsers.AvitoHTMLParser;
@@ -13,6 +14,7 @@ import java.util.Collection;
 import java.util.List;
 import java.util.stream.Collectors;
 
+@Slf4j
 @RequiredArgsConstructor
 @FieldDefaults(level = AccessLevel.PRIVATE, makeFinal = true)
 @Service
@@ -21,24 +23,15 @@ public class AvgPriceMessageService {
     BotConfig botConfig;
     AvitoHTMLParser avitoHTMLParser;
 
-    public double calculateAvgPrice(String cityInEnglish, String product)
-            throws IOException, InterruptedException {
+    public double getAvgOnAllPages(String cityInEnglish, String product) {
 
-        String URLCityAndProduct = botConfig.getRootURL() + cityInEnglish + "?q=" + product;
-        int numOfPages = avitoHTMLParser.getNumOfPages(URLCityAndProduct);
-        return getAvgOnAllPages(product, cityInEnglish, numOfPages);
-    }
-
-    private double getAvgOnAllPages(String product, String cityInEnglish, int numOfPages)
-            throws InterruptedException, IOException {
-
-        if (numOfPages >= botConfig.getPagesLimit()) {
-            numOfPages = botConfig.getPagesLimit();
-        }
         List<List<Double>> listOfPricesOnEveryPage = new ArrayList<>();
-        for (int page = 1; page < numOfPages; page++) {
+        for (int page = 1; page <= botConfig.getPagesLimit(); page++) {
             String URLCityPageProduct = botConfig.getRootURL() + cityInEnglish + "?p=" + page + "&q=" + product;
             List<Double> listOfPricesOnPage = avitoHTMLParser.getListOfPricesFromURL(URLCityPageProduct);
+            if (listOfPricesOnPage == null) {
+                break;
+            }
             listOfPricesOnEveryPage.add(listOfPricesOnPage);
         }
         return calculateAvgPriceFromAllPages(listOfPricesOnEveryPage);
@@ -51,6 +44,7 @@ public class AvgPriceMessageService {
                 .filter(list -> list != null)
                 .flatMap(Collection::stream)
                 .collect(Collectors.toList());
+        log.info("numberOfPrices: {}", listOfPricesFromAllPages.size());
 
         double averagePriceCommon = listOfPricesFromAllPages
                 .stream()
@@ -58,13 +52,16 @@ public class AvgPriceMessageService {
                 .average()
                 .getAsDouble();
 
+        log.info("averagePriceCommon: {}", averagePriceCommon);
         double deletionThreshold = (averagePriceCommon / 100) * botConfig.getPriceThreshold();
 
-        return listOfPricesFromAllPages
+        double averagePriceFiltered = listOfPricesFromAllPages
                 .stream()
                 .filter(p -> (averagePriceCommon - p) < deletionThreshold)
                 .mapToDouble(p -> p)
                 .average()
                 .getAsDouble();
+        log.info("averagePriceFiltered: {}", averagePriceFiltered);
+        return averagePriceFiltered;
     }
 }

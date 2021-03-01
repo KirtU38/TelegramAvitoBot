@@ -2,6 +2,8 @@ package ru.beloshitsky.telegrambot.botapi;
 
 import lombok.*;
 import lombok.experimental.FieldDefaults;
+import lombok.extern.slf4j.Slf4j;
+import org.slf4j.Logger;
 import org.springframework.stereotype.Component;
 import org.telegram.telegrambots.bots.TelegramLongPollingBot;
 import org.telegram.telegrambots.meta.TelegramBotsApi;
@@ -14,6 +16,7 @@ import ru.beloshitsky.telegrambot.services.BotService;
 
 import javax.annotation.PostConstruct;
 
+@Slf4j
 @RequiredArgsConstructor
 @FieldDefaults(level = AccessLevel.PRIVATE, makeFinal = true)
 @Component
@@ -21,6 +24,7 @@ public class Bot extends TelegramLongPollingBot {
 
     BotService botService;
     BotConfig botConfig;
+    Logger logError;
 
     @Override
     public String getBotUsername() {
@@ -40,8 +44,14 @@ public class Bot extends TelegramLongPollingBot {
     }
 
     @PostConstruct
-    public void registerBot() throws TelegramApiException {
-        TelegramBotsApi botsApi = new TelegramBotsApi(DefaultBotSession.class);
-        botsApi.registerBot(this);
+    public void registerBot() {
+        TelegramBotsApi botsApi = null;
+        try {
+            botsApi = new TelegramBotsApi(DefaultBotSession.class);
+            botsApi.registerBot(this);
+        } catch (TelegramApiException e) {
+            logError.error("Couldn't register a Bot");
+            e.printStackTrace();
+        }
     }
 }
