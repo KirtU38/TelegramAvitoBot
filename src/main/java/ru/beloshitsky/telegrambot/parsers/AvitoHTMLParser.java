@@ -9,7 +9,6 @@ import org.jsoup.nodes.Document;
 import org.jsoup.select.Elements;
 import org.springframework.stereotype.Component;
 import ru.beloshitsky.telegrambot.configuration.BotConfig;
-import ru.beloshitsky.telegrambot.messages.AveragePriceMessage;
 
 import java.io.IOException;
 import java.util.List;
@@ -42,25 +41,24 @@ public class AvitoHTMLParser {
     Document htmlDoc = null;
     log.info(URL);
 
-    synchronized (AveragePriceMessage.class) {
-      long start = System.currentTimeMillis();
-      try {
-        htmlDoc = Jsoup.connect(URL).get();
-      } catch (IOException e) {
-        log.error("Couldn't fetch the URL");
-        e.printStackTrace();
-      }
-      long wastedTime = System.currentTimeMillis() - start;
-      try {
-        Thread.sleep(
-            wastedTime >= botConfig.getDelayBetweenConnections()
-                ? 0
-                : botConfig.getDelayBetweenConnections() - wastedTime);
-      } catch (InterruptedException e) {
-        log.error("Thread was interrupted");
-        e.printStackTrace();
-      }
+    long start = System.currentTimeMillis();
+    try {
+      htmlDoc = Jsoup.connect(URL).get();
+    } catch (IOException e) {
+      log.error("Couldn't fetch the URL");
+      e.printStackTrace();
     }
+    long wastedTime = System.currentTimeMillis() - start;
+    try {
+      Thread.sleep(
+          wastedTime >= botConfig.getDelayBetweenConnections()
+              ? 0
+              : botConfig.getDelayBetweenConnections() - wastedTime);
+    } catch (InterruptedException e) {
+      log.error("Thread was interrupted");
+      e.printStackTrace();
+    }
+
     return htmlDoc;
   }
 }
