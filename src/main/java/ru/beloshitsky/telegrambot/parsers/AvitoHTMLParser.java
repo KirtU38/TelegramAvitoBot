@@ -4,13 +4,11 @@ import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
 import lombok.experimental.FieldDefaults;
 import lombok.extern.slf4j.Slf4j;
-import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.select.Elements;
 import org.springframework.stereotype.Component;
 import ru.beloshitsky.telegrambot.configuration.BotConfig;
 
-import java.io.IOException;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -41,13 +39,13 @@ public class AvitoHTMLParser {
     Document htmlDoc = null;
     log.info(URL);
 
-    try {
-      htmlDoc = Jsoup.connect(URL).get();
-    } catch (IOException e) {
-      log.error("Couldn't fetch the URL");
-      e.printStackTrace();
-      return null;
-    }
+    // try {
+    //   htmlDoc = Jsoup.connect(URL).get();
+    // } catch (IOException e) {
+    //   log.error("Couldn't fetch the URL");
+    //   e.printStackTrace();
+    //   return null;
+    // }
 
     return htmlDoc;
   }
