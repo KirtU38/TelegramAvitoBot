@@ -1,1 +1,0 @@
-web: java -Dserver.port=5000 -jar target/telegrambot-1.0-SNAPSHOT.jar
