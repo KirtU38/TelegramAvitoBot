@@ -22,7 +22,7 @@ public class AvitoHTMLParser {
   BotConfig botConfig;
   AvitoTagsParser tagsParser;
 
-  public List<Double> getListOfPricesFromURL(String URLCityPageProduct) {
+  public List<Double> getListOfPricesFromURL(String URLCityPageProduct) throws NullPointerException {
     Document htmlDoc = getHTML(URLCityPageProduct);
     if (htmlDoc == null) {
       return null;
