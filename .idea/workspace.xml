@@ -22,7 +22,10 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="642ce813-3a30-4580-8717-e0b2535895d6" name="Default Changelist" comment="TelegramWebhookBot target try 2" />
+    <list default="true" id="642ce813-3a30-4580-8717-e0b2535895d6" name="Default Changelist" comment="TelegramWebhookBot target try 5">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -421,11 +424,33 @@
       <option name="project" value="LOCAL" />
       <updated>1614878862456</updated>
     </task>
-    <option name="localTasksCounter" value="38" />
+    <task id="LOCAL-00038" summary="TelegramWebhookBot target try 3">
+      <created>1614879218314</created>
+      <option name="number" value="00038" />
+      <option name="presentableId" value="LOCAL-00038" />
+      <option name="project" value="LOCAL" />
+      <updated>1614879218314</updated>
+    </task>
+    <task id="LOCAL-00039" summary="TelegramWebhookBot target try 4">
+      <created>1614879372067</created>
+      <option name="number" value="00039" />
+      <option name="presentableId" value="LOCAL-00039" />
+      <option name="project" value="LOCAL" />
+      <updated>1614879372067</updated>
+    </task>
+    <task id="LOCAL-00040" summary="TelegramWebhookBot target try 5">
+      <created>1614879580024</created>
+      <option name="number" value="00040" />
+      <option name="presentableId" value="LOCAL-00040" />
+      <option name="project" value="LOCAL" />
+      <updated>1614879580024</updated>
+    </task>
+    <option name="localTasksCounter" value="41" />
     <servers />
   </component>
   <component name="UnknownFeatures">
     <option featureType="com.intellij.fileTypeFactory" implementationName="*.csv" />
+    <option featureType="com.intellij.fileTypeFactory" implementationName="*.gradle" />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
@@ -456,9 +481,6 @@
     <ignored-roots>
       <path value="$PROJECT_DIR$/.." />
     </ignored-roots>
-    <MESSAGE value="TelegramLongPollingBot google style formatted" />
-    <MESSAGE value="TelegramLongPollingBot properties edited" />
-    <MESSAGE value="TelegramLongPollingBot properties edited 2" />
     <MESSAGE value="TelegramWebhookBot ready for Heroku" />
     <MESSAGE value="TelegramWebhookBot ready for Heroku lombok fixed" />
     <MESSAGE value="TelegramWebhookBot ready for Heroku lombok fixed 1" />
@@ -481,7 +503,10 @@
     <MESSAGE value="TelegramWebhookBot terget try" />
     <MESSAGE value="TelegramWebhookBot target try 1" />
     <MESSAGE value="TelegramWebhookBot target try 2" />
-    <option name="LAST_COMMIT_MESSAGE" value="TelegramWebhookBot target try 2" />
+    <MESSAGE value="TelegramWebhookBot target try 3" />
+    <MESSAGE value="TelegramWebhookBot target try 4" />
+    <MESSAGE value="TelegramWebhookBot target try 5" />
+    <option name="LAST_COMMIT_MESSAGE" value="TelegramWebhookBot target try 5" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
   <component name="XDebuggerManager">
