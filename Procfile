@@ -1,1 +1,0 @@
-web: java -jar src/*.jar
