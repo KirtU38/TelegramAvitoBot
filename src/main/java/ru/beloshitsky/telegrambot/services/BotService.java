@@ -35,7 +35,7 @@ public class BotService {
       }
 
       log.info("text: {}, chat_id: {}, command: {}", text, chatId, command);
-      message = mapOfMessages.get(command).getMessage(text, chatId);
+      message = mapOfMessages.getOrDefault(command, mapOfMessages.get("ошибка")).getMessage(text, chatId);
     }
     return message;
   }

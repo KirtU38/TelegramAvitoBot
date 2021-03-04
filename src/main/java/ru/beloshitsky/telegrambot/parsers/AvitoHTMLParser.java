@@ -7,7 +7,6 @@ import lombok.extern.slf4j.Slf4j;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.select.Elements;
-import org.slf4j.Logger;
 import org.springframework.stereotype.Component;
 import ru.beloshitsky.telegrambot.configuration.BotConfig;
 import ru.beloshitsky.telegrambot.messages.AveragePriceMessage;
@@ -23,7 +22,6 @@ import java.util.stream.Collectors;
 public class AvitoHTMLParser {
   BotConfig botConfig;
   AvitoTagsParser tagsParser;
-  Logger logError;
 
   public List<Double> getListOfPricesFromURL(String URLCityPageProduct) {
     Document htmlDoc = getHTML(URLCityPageProduct);
@@ -49,7 +47,7 @@ public class AvitoHTMLParser {
       try {
         htmlDoc = Jsoup.connect(URL).get();
       } catch (IOException e) {
-        logError.error("Couldn't fetch the URL");
+        log.error("Couldn't fetch the URL");
         e.printStackTrace();
       }
       long wastedTime = System.currentTimeMillis() - start;
@@ -59,7 +57,7 @@ public class AvitoHTMLParser {
                 ? 0
                 : botConfig.getDelayBetweenConnections() - wastedTime);
       } catch (InterruptedException e) {
-        logError.error("Thread was interrupted");
+        log.error("Thread was interrupted");
         e.printStackTrace();
       }
     }
