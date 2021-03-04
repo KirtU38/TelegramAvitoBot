@@ -22,6 +22,9 @@ public class AvitoHTMLParser {
 
   public List<Double> getListOfPricesFromURL(String URLCityPageProduct) {
     Document htmlDoc = getHTML(URLCityPageProduct);
+    if (htmlDoc == null) {
+      return null;
+    }
     Elements elementsPrices = tagsParser.selectPrices(htmlDoc);
     List<Double> listOfPricesOnPage = null;
 
