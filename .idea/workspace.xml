@@ -1,0 +1,482 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="BranchesTreeState">
+    <expand>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </expand>
+    <select />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="642ce813-3a30-4580-8717-e0b2535895d6" name="Default Changelist" comment="TelegramWebhookBot getting ready">
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Interface" />
+        <option value="Enum" />
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="master" />
+      </map>
+    </option>
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="RESET_MODE" value="SOFT" />
+  </component>
+  <component name="GitSEFilterConfiguration">
+    <file-type-list>
+      <filtered-out-file-type name="LOCAL_BRANCH" />
+      <filtered-out-file-type name="REMOTE_BRANCH" />
+      <filtered-out-file-type name="TAG" />
+      <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
+    </file-type-list>
+  </component>
+  <component name="MavenImportPreferences">
+    <option name="importingSettings">
+      <MavenImportingSettings>
+        <option name="vmOptionsForImporter" value="-Xmx768m" />
+      </MavenImportingSettings>
+    </option>
+  </component>
+  <component name="ProjectId" id="1e2EiqRJiqbw1OVqSvcfSFJWB9t" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
+    <property name="LombokPluginEnabledInProject" value="true" />
+    <property name="LombokPluginIS_ANNOTATION_PROCESSING_CHECK_Enabled" value="true" />
+    <property name="LombokPluginIS_BUILDER_Enabled" value="true" />
+    <property name="LombokPluginIS_CONSTRUCTOR_Enabled" value="true" />
+    <property name="LombokPluginIS_DELEGATE_Enabled" value="true" />
+    <property name="LombokPluginIS_LOG_Enabled" value="true" />
+    <property name="LombokPluginIS_LOMBOK_VERSION_CHECK_Enabled" value="false" />
+    <property name="LombokPluginIS_MISSING_LOMBOK_CHECK_Enabled" value="true" />
+    <property name="LombokPluginIS_VAL_Enabled" value="true" />
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main/resources" />
+    <property name="project.structure.last.edited" value="Project" />
+    <property name="project.structure.proportion" value="0.15" />
+    <property name="project.structure.side.proportion" value="0.2862069" />
+    <property name="settings.editor.selected.configurable" value="MavenSettings" />
+    <property name="settings.editor.splitter.proportion" value="0.24236253" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/main/resources" />
+      <recent name="$PROJECT_DIR$/src" />
+      <recent name="$PROJECT_DIR$" />
+      <recent name="$PROJECT_DIR$/files" />
+      <recent name="$PROJECT_DIR$/data" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/files" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="ru.beloshitsky.telegrambot.messages" />
+      <recent name="ru.beloshitsky.telegrambot.bot.messages" />
+      <recent name="" />
+    </key>
+  </component>
+  <component name="RunManager">
+    <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="ru.beloshitsky.telegrambot.Main" />
+      <module name="Telegram Avito Bot Spring" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="ru.beloshitsky.telegrambot.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="ru.beloshitsky.telegrambot.Main" />
+      <module name="Telegram Avito Bot Spring" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="ru.beloshitsky.telegrambot.botapi.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Main" />
+      <module name="Learn Maven" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.Main" />
+        <item itemvalue="Application.Main" />
+        <item itemvalue="Application.Main" />
+        <item itemvalue="Application.Main" />
+        <item itemvalue="Application.Main" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="project-level" UseSingleDictionary="true" transferred="true" />
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="642ce813-3a30-4580-8717-e0b2535895d6" name="Default Changelist" comment="" />
+      <created>1593511417901</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1593511417901</updated>
+    </task>
+    <task id="LOCAL-00001" summary="Learn Maven">
+      <created>1596514173565</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1596514173565</updated>
+    </task>
+    <task id="LOCAL-00002" summary="JUnit goddamn">
+      <created>1612285268990</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1612285268990</updated>
+    </task>
+    <task id="LOCAL-00003" summary="Telegram Chat Bot Business Logic">
+      <created>1613830086102</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1613830086102</updated>
+    </task>
+    <task id="LOCAL-00004" summary="Telegram Chat Bot Multiple Pages">
+      <created>1613914804617</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1613914804617</updated>
+    </task>
+    <task id="LOCAL-00005" summary="Telegram Chat Bot Multiple Almost ready">
+      <created>1613955538767</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1613955538767</updated>
+    </task>
+    <task id="LOCAL-00006" summary="Telegram Chat Bot Hustling">
+      <created>1613995575816</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1613995575817</updated>
+    </task>
+    <task id="LOCAL-00007" summary="Telegram Spring stuck">
+      <created>1614164448447</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1614164448447</updated>
+    </task>
+    <task id="LOCAL-00008" summary="Telegram Bot LongPolling">
+      <created>1614211548877</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1614211548877</updated>
+    </task>
+    <task id="LOCAL-00009" summary="Telegram Bot LongPolling mapOfMessages added">
+      <created>1614273661469</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1614273661469</updated>
+    </task>
+    <task id="LOCAL-00010" summary="TelegramLongPollingBot parser added, beans structured">
+      <created>1614373941388</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1614373941394</updated>
+    </task>
+    <task id="LOCAL-00011" summary="TelegramLongPollingBot logging">
+      <created>1614512465387</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1614512465387</updated>
+    </task>
+    <task id="LOCAL-00012" summary="TelegramLongPollingBot logging done">
+      <created>1614608143232</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1614608143232</updated>
+    </task>
+    <task id="LOCAL-00013" summary="TelegramLongPollingBot google style formatted">
+      <created>1614622063648</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1614622063649</updated>
+    </task>
+    <task id="LOCAL-00014" summary="TelegramLongPollingBot properties edited">
+      <created>1614696832543</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1614696832543</updated>
+    </task>
+    <task id="LOCAL-00015" summary="TelegramLongPollingBot properties edited 2">
+      <created>1614696919620</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1614696919620</updated>
+    </task>
+    <task id="LOCAL-00016" summary="TelegramWebhookBot ready for Heroku">
+      <created>1614865929323</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1614865929323</updated>
+    </task>
+    <task id="LOCAL-00017" summary="TelegramWebhookBot ready for Heroku lombok fixed">
+      <created>1614866688880</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1614866688880</updated>
+    </task>
+    <task id="LOCAL-00018" summary="TelegramWebhookBot ready for Heroku lombok fixed 1">
+      <created>1614868469839</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1614868469839</updated>
+    </task>
+    <task id="LOCAL-00019" summary="TelegramWebhookBot ready for Heroku Dserver.port">
+      <created>1614869492844</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1614869492844</updated>
+    </task>
+    <task id="LOCAL-00020" summary="TelegramWebhookBot ready for Heroku Spring boot maven plugin">
+      <created>1614869926039</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1614869926039</updated>
+    </task>
+    <task id="LOCAL-00021" summary="TelegramWebhookBot ready for Heroku Spring boot maven plugin 1">
+      <created>1614870392424</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1614870392424</updated>
+    </task>
+    <task id="LOCAL-00022" summary="TelegramWebhookBot ready for Heroku trying to start">
+      <created>1614871497594</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1614871497594</updated>
+    </task>
+    <task id="LOCAL-00023" summary="TelegramWebhookBot ready for Heroku trying to start1">
+      <created>1614871772077</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1614871772077</updated>
+    </task>
+    <task id="LOCAL-00024" summary="TelegramWebhookBot ready for Heroku trying to start3">
+      <created>1614872190342</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1614872190342</updated>
+    </task>
+    <task id="LOCAL-00025" summary="TelegramWebhookBot ready for Heroku trying to start4">
+      <created>1614874372223</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1614874372223</updated>
+    </task>
+    <task id="LOCAL-00026" summary="TelegramWebhookBot ready for Heroku trying to start5">
+      <created>1614874543393</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1614874543393</updated>
+    </task>
+    <task id="LOCAL-00027" summary="TelegramWebhookBot ready for Heroku trying to start6">
+      <created>1614875019711</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1614875019711</updated>
+    </task>
+    <task id="LOCAL-00028" summary="TelegramWebhookBot ready for Heroku trying to start7">
+      <created>1614875328220</created>
+      <option name="number" value="00028" />
+      <option name="presentableId" value="LOCAL-00028" />
+      <option name="project" value="LOCAL" />
+      <updated>1614875328220</updated>
+    </task>
+    <task id="LOCAL-00029" summary="TelegramWebhookBot ready for Heroku trying to start8">
+      <created>1614875660371</created>
+      <option name="number" value="00029" />
+      <option name="presentableId" value="LOCAL-00029" />
+      <option name="project" value="LOCAL" />
+      <updated>1614875660371</updated>
+    </task>
+    <task id="LOCAL-00030" summary="TelegramWebhookBot ready for Heroku trying to start9">
+      <created>1614875767678</created>
+      <option name="number" value="00030" />
+      <option name="presentableId" value="LOCAL-00030" />
+      <option name="project" value="LOCAL" />
+      <updated>1614875767678</updated>
+    </task>
+    <task id="LOCAL-00031" summary="TelegramWebhookBot ready for Heroku trying to start10">
+      <created>1614876204789</created>
+      <option name="number" value="00031" />
+      <option name="presentableId" value="LOCAL-00031" />
+      <option name="project" value="LOCAL" />
+      <updated>1614876204789</updated>
+    </task>
+    <task id="LOCAL-00032" summary="TelegramWebhookBot ready for Heroku trying to start11">
+      <created>1614876302636</created>
+      <option name="number" value="00032" />
+      <option name="presentableId" value="LOCAL-00032" />
+      <option name="project" value="LOCAL" />
+      <updated>1614876302636</updated>
+    </task>
+    <task id="LOCAL-00033" summary="TelegramWebhookBot ready for Heroku trying to start12">
+      <created>1614876474992</created>
+      <option name="number" value="00033" />
+      <option name="presentableId" value="LOCAL-00033" />
+      <option name="project" value="LOCAL" />
+      <updated>1614876474992</updated>
+    </task>
+    <task id="LOCAL-00034" summary="TelegramWebhookBot getting ready">
+      <created>1614877030481</created>
+      <option name="number" value="00034" />
+      <option name="presentableId" value="LOCAL-00034" />
+      <option name="project" value="LOCAL" />
+      <updated>1614877030481</updated>
+    </task>
+    <option name="localTasksCounter" value="35" />
+    <servers />
+  </component>
+  <component name="UnknownFeatures">
+    <option featureType="com.intellij.fileTypeFactory" implementationName="*.csv" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="webhook" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+    <ignored-roots>
+      <path value="$PROJECT_DIR$/.." />
+    </ignored-roots>
+    <MESSAGE value="TelegramLongPollingBot parser added, beans structured" />
+    <MESSAGE value="TelegramLongPollingBot logging" />
+    <MESSAGE value="TelegramLongPollingBot logging done" />
+    <MESSAGE value="TelegramLongPollingBot google style formatted" />
+    <MESSAGE value="TelegramLongPollingBot properties edited" />
+    <MESSAGE value="TelegramLongPollingBot properties edited 2" />
+    <MESSAGE value="TelegramWebhookBot ready for Heroku" />
+    <MESSAGE value="TelegramWebhookBot ready for Heroku lombok fixed" />
+    <MESSAGE value="TelegramWebhookBot ready for Heroku lombok fixed 1" />
+    <MESSAGE value="TelegramWebhookBot ready for Heroku Dserver.port" />
+    <MESSAGE value="TelegramWebhookBot ready for Heroku Spring boot maven plugin" />
+    <MESSAGE value="TelegramWebhookBot ready for Heroku Spring boot maven plugin 1" />
+    <MESSAGE value="TelegramWebhookBot ready for Heroku trying to start" />
+    <MESSAGE value="TelegramWebhookBot ready for Heroku trying to start1" />
+    <MESSAGE value="TelegramWebhookBot ready for Heroku trying to start3" />
+    <MESSAGE value="TelegramWebhookBot ready for Heroku trying to start4" />
+    <MESSAGE value="TelegramWebhookBot ready for Heroku trying to start5" />
+    <MESSAGE value="TelegramWebhookBot ready for Heroku trying to start6" />
+    <MESSAGE value="TelegramWebhookBot ready for Heroku trying to start7" />
+    <MESSAGE value="TelegramWebhookBot ready for Heroku trying to start8" />
+    <MESSAGE value="TelegramWebhookBot ready for Heroku trying to start9" />
+    <MESSAGE value="TelegramWebhookBot ready for Heroku trying to start10" />
+    <MESSAGE value="TelegramWebhookBot ready for Heroku trying to start11" />
+    <MESSAGE value="TelegramWebhookBot ready for Heroku trying to start12" />
+    <MESSAGE value="TelegramWebhookBot getting ready" />
+    <option name="LAST_COMMIT_MESSAGE" value="TelegramWebhookBot getting ready" />
+    <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <breakpoint enabled="true" type="java-exception">
+          <properties class="java.lang.IndexOutOfBoundsException" package="java.lang" />
+          <option name="timeStamp" value="8" />
+        </breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
+  </component>
+</project>
