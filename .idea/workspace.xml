@@ -22,35 +22,7 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="642ce813-3a30-4580-8717-e0b2535895d6" name="Default Changelist" comment="TelegramWebhookBot target try 1">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/application.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/cities.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/citiesMap.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ru/beloshitsky/telegrambot/Bot.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ru/beloshitsky/telegrambot/Main.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ru/beloshitsky/telegrambot/configuration/BotConfig.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ru/beloshitsky/telegrambot/configuration/SpringConfig.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ru/beloshitsky/telegrambot/controller/Controller.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ru/beloshitsky/telegrambot/messages/AveragePriceMessage.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ru/beloshitsky/telegrambot/messages/HelpMessage.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ru/beloshitsky/telegrambot/messages/Message.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ru/beloshitsky/telegrambot/messages/StartMessage.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ru/beloshitsky/telegrambot/messages/WrongMessage.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ru/beloshitsky/telegrambot/parsers/AvitoHTMLParser.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ru/beloshitsky/telegrambot/parsers/AvitoTagsParser.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ru/beloshitsky/telegrambot/parsers/InputParses.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ru/beloshitsky/telegrambot/services/AvgPriceMessageService.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ru/beloshitsky/telegrambot/services/BotService.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ru/beloshitsky/telegrambot/services/PingTask.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/maven-archiver/pom.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/createdFiles.lst" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/inputFiles.lst" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/telegrambot-1.0-SNAPSHOT.jar" beforeDir="false" />
-    </list>
+    <list default="true" id="642ce813-3a30-4580-8717-e0b2535895d6" name="Default Changelist" comment="TelegramWebhookBot target try 2" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -442,7 +414,14 @@
       <option name="project" value="LOCAL" />
       <updated>1614878126333</updated>
     </task>
-    <option name="localTasksCounter" value="37" />
+    <task id="LOCAL-00037" summary="TelegramWebhookBot target try 2">
+      <created>1614878862456</created>
+      <option name="number" value="00037" />
+      <option name="presentableId" value="LOCAL-00037" />
+      <option name="project" value="LOCAL" />
+      <updated>1614878862456</updated>
+    </task>
+    <option name="localTasksCounter" value="38" />
     <servers />
   </component>
   <component name="UnknownFeatures">
@@ -477,7 +456,6 @@
     <ignored-roots>
       <path value="$PROJECT_DIR$/.." />
     </ignored-roots>
-    <MESSAGE value="TelegramLongPollingBot logging done" />
     <MESSAGE value="TelegramLongPollingBot google style formatted" />
     <MESSAGE value="TelegramLongPollingBot properties edited" />
     <MESSAGE value="TelegramLongPollingBot properties edited 2" />
@@ -502,7 +480,8 @@
     <MESSAGE value="TelegramWebhookBot getting ready" />
     <MESSAGE value="TelegramWebhookBot terget try" />
     <MESSAGE value="TelegramWebhookBot target try 1" />
-    <option name="LAST_COMMIT_MESSAGE" value="TelegramWebhookBot target try 1" />
+    <MESSAGE value="TelegramWebhookBot target try 2" />
+    <option name="LAST_COMMIT_MESSAGE" value="TelegramWebhookBot target try 2" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
   <component name="XDebuggerManager">
