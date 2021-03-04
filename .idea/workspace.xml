@@ -22,8 +22,9 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="642ce813-3a30-4580-8717-e0b2535895d6" name="Default Changelist" comment="TelegramWebhookBot getting ready">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" />
+    <list default="true" id="642ce813-3a30-4580-8717-e0b2535895d6" name="Default Changelist" comment="TelegramWebhookBot terget try">
+      <change afterPath="$PROJECT_DIR$/Procfile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -402,7 +403,14 @@
       <option name="project" value="LOCAL" />
       <updated>1614877030481</updated>
     </task>
-    <option name="localTasksCounter" value="35" />
+    <task id="LOCAL-00035" summary="TelegramWebhookBot terget try">
+      <created>1614877542558</created>
+      <option name="number" value="00035" />
+      <option name="presentableId" value="LOCAL-00035" />
+      <option name="project" value="LOCAL" />
+      <updated>1614877542558</updated>
+    </task>
+    <option name="localTasksCounter" value="36" />
     <servers />
   </component>
   <component name="UnknownFeatures">
@@ -437,7 +445,6 @@
     <ignored-roots>
       <path value="$PROJECT_DIR$/.." />
     </ignored-roots>
-    <MESSAGE value="TelegramLongPollingBot parser added, beans structured" />
     <MESSAGE value="TelegramLongPollingBot logging" />
     <MESSAGE value="TelegramLongPollingBot logging done" />
     <MESSAGE value="TelegramLongPollingBot google style formatted" />
@@ -462,7 +469,8 @@
     <MESSAGE value="TelegramWebhookBot ready for Heroku trying to start11" />
     <MESSAGE value="TelegramWebhookBot ready for Heroku trying to start12" />
     <MESSAGE value="TelegramWebhookBot getting ready" />
-    <option name="LAST_COMMIT_MESSAGE" value="TelegramWebhookBot getting ready" />
+    <MESSAGE value="TelegramWebhookBot terget try" />
+    <option name="LAST_COMMIT_MESSAGE" value="TelegramWebhookBot terget try" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
   <component name="XDebuggerManager">
