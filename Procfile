@@ -1,1 +1,1 @@
-web: java -Dserver.port=5000 $JAVA_OPTS -jar target/telegrambot-1.0-SNAPSHOT.jar
+web: java -Dserver.port=5000 -jar target/telegrambot-1.0-SNAPSHOT.jar
