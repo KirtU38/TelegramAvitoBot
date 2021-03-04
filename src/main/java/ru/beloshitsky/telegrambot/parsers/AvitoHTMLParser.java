@@ -41,22 +41,12 @@ public class AvitoHTMLParser {
     Document htmlDoc = null;
     log.info(URL);
 
-    long start = System.currentTimeMillis();
     try {
       htmlDoc = Jsoup.connect(URL).get();
     } catch (IOException e) {
       log.error("Couldn't fetch the URL");
       e.printStackTrace();
-    }
-    long wastedTime = System.currentTimeMillis() - start;
-    try {
-      Thread.sleep(
-          wastedTime >= botConfig.getDelayBetweenConnections()
-              ? 0
-              : botConfig.getDelayBetweenConnections() - wastedTime);
-    } catch (InterruptedException e) {
-      log.error("Thread was interrupted");
-      e.printStackTrace();
+      return null;
     }
 
     return htmlDoc;

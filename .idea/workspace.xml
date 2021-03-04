@@ -22,7 +22,10 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="642ce813-3a30-4580-8717-e0b2535895d6" name="Default Changelist" comment="TelegramWebhookBot target try 11" />
+    <list default="true" id="642ce813-3a30-4580-8717-e0b2535895d6" name="Default Changelist" comment="TelegramWebhookBot working 1">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/beloshitsky/telegrambot/parsers/AvitoHTMLParser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/beloshitsky/telegrambot/parsers/AvitoHTMLParser.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -82,7 +85,7 @@
     <property name="LombokPluginIS_VAL_Enabled" value="true" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main/resources" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="project.structure.last.edited" value="Project" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2862069" />
@@ -91,9 +94,9 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$" />
       <recent name="$PROJECT_DIR$/src/main/resources" />
       <recent name="$PROJECT_DIR$/src" />
-      <recent name="$PROJECT_DIR$" />
       <recent name="$PROJECT_DIR$/files" />
       <recent name="$PROJECT_DIR$/data" />
     </key>
@@ -484,7 +487,21 @@
       <option name="project" value="LOCAL" />
       <updated>1614881833026</updated>
     </task>
-    <option name="localTasksCounter" value="47" />
+    <task id="LOCAL-00047" summary="TelegramWebhookBot working">
+      <created>1614882150242</created>
+      <option name="number" value="00047" />
+      <option name="presentableId" value="LOCAL-00047" />
+      <option name="project" value="LOCAL" />
+      <updated>1614882150243</updated>
+    </task>
+    <task id="LOCAL-00048" summary="TelegramWebhookBot working 1">
+      <created>1614882811192</created>
+      <option name="number" value="00048" />
+      <option name="presentableId" value="LOCAL-00048" />
+      <option name="project" value="LOCAL" />
+      <updated>1614882811193</updated>
+    </task>
+    <option name="localTasksCounter" value="49" />
     <servers />
   </component>
   <component name="UnknownFeatures">
@@ -520,8 +537,6 @@
     <ignored-roots>
       <path value="$PROJECT_DIR$/.." />
     </ignored-roots>
-    <MESSAGE value="TelegramWebhookBot ready for Heroku trying to start" />
-    <MESSAGE value="TelegramWebhookBot ready for Heroku trying to start1" />
     <MESSAGE value="TelegramWebhookBot ready for Heroku trying to start3" />
     <MESSAGE value="TelegramWebhookBot ready for Heroku trying to start4" />
     <MESSAGE value="TelegramWebhookBot ready for Heroku trying to start5" />
@@ -545,7 +560,9 @@
     <MESSAGE value="TelegramWebhookBot target try 9" />
     <MESSAGE value="TelegramWebhookBot target try 10" />
     <MESSAGE value="TelegramWebhookBot target try 11" />
-    <option name="LAST_COMMIT_MESSAGE" value="TelegramWebhookBot target try 11" />
+    <MESSAGE value="TelegramWebhookBot working" />
+    <MESSAGE value="TelegramWebhookBot working 1" />
+    <option name="LAST_COMMIT_MESSAGE" value="TelegramWebhookBot working 1" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
   <component name="XDebuggerManager">
