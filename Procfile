@@ -1,0 +1,1 @@
+web: java -Dserver.port=443 $JAVA_OPTS -jar target/telegrambot-1.0-SNAPSHOT.jar
