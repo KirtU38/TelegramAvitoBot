@@ -22,7 +22,9 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="642ce813-3a30-4580-8717-e0b2535895d6" name="Default Changelist" comment="TelegramWebhookBot working 3" />
+    <list default="true" id="642ce813-3a30-4580-8717-e0b2535895d6" name="Default Changelist" comment="TelegramWebhookBot working 4">
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/beloshitsky/telegrambot/parsers/AvitoHTMLParser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/beloshitsky/telegrambot/parsers/AvitoHTMLParser.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -161,13 +163,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1593511417901</updated>
-    </task>
-    <task id="LOCAL-00002" summary="JUnit goddamn">
-      <created>1612285268990</created>
-      <option name="number" value="00002" />
-      <option name="presentableId" value="LOCAL-00002" />
-      <option name="project" value="LOCAL" />
-      <updated>1612285268990</updated>
     </task>
     <task id="LOCAL-00003" summary="Telegram Chat Bot Business Logic">
       <created>1613830086102</created>
@@ -505,7 +500,14 @@
       <option name="project" value="LOCAL" />
       <updated>1614883396467</updated>
     </task>
-    <option name="localTasksCounter" value="51" />
+    <task id="LOCAL-00051" summary="TelegramWebhookBot working 4">
+      <created>1614883791410</created>
+      <option name="number" value="00051" />
+      <option name="presentableId" value="LOCAL-00051" />
+      <option name="project" value="LOCAL" />
+      <updated>1614883791410</updated>
+    </task>
+    <option name="localTasksCounter" value="52" />
     <servers />
   </component>
   <component name="UnknownFeatures">
@@ -541,7 +543,6 @@
     <ignored-roots>
       <path value="$PROJECT_DIR$/.." />
     </ignored-roots>
-    <MESSAGE value="TelegramWebhookBot ready for Heroku trying to start5" />
     <MESSAGE value="TelegramWebhookBot ready for Heroku trying to start6" />
     <MESSAGE value="TelegramWebhookBot ready for Heroku trying to start7" />
     <MESSAGE value="TelegramWebhookBot ready for Heroku trying to start8" />
@@ -566,7 +567,8 @@
     <MESSAGE value="TelegramWebhookBot working 1" />
     <MESSAGE value="TelegramWebhookBot working 2" />
     <MESSAGE value="TelegramWebhookBot working 3" />
-    <option name="LAST_COMMIT_MESSAGE" value="TelegramWebhookBot working 3" />
+    <MESSAGE value="TelegramWebhookBot working 4" />
+    <option name="LAST_COMMIT_MESSAGE" value="TelegramWebhookBot working 4" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
   <component name="XDebuggerManager">
