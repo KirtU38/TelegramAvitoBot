@@ -22,7 +22,7 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="642ce813-3a30-4580-8717-e0b2535895d6" name="Default Changelist" comment="TelegramWebhookBot no maven jar plugin + no property start class" />
+    <list default="true" id="642ce813-3a30-4580-8717-e0b2535895d6" name="Default Changelist" comment="TelegramWebhookBot no maven jar plugin + no property start class + parent ${spring.version}" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -161,20 +161,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1593511417901</updated>
-    </task>
-    <task id="LOCAL-00009" summary="Telegram Bot LongPolling mapOfMessages added">
-      <created>1614273661469</created>
-      <option name="number" value="00009" />
-      <option name="presentableId" value="LOCAL-00009" />
-      <option name="project" value="LOCAL" />
-      <updated>1614273661469</updated>
-    </task>
-    <task id="LOCAL-00010" summary="TelegramLongPollingBot parser added, beans structured">
-      <created>1614373941388</created>
-      <option name="number" value="00010" />
-      <option name="presentableId" value="LOCAL-00010" />
-      <option name="project" value="LOCAL" />
-      <updated>1614373941394</updated>
     </task>
     <task id="LOCAL-00011" summary="TelegramLongPollingBot logging">
       <created>1614512465387</created>
@@ -505,7 +491,21 @@
       <option name="project" value="LOCAL" />
       <updated>1614950565494</updated>
     </task>
-    <option name="localTasksCounter" value="58" />
+    <task id="LOCAL-00058" summary="TelegramWebhookBot no maven jar plugin + no property start class + no parent">
+      <created>1614950730021</created>
+      <option name="number" value="00058" />
+      <option name="presentableId" value="LOCAL-00058" />
+      <option name="project" value="LOCAL" />
+      <updated>1614950730021</updated>
+    </task>
+    <task id="LOCAL-00059" summary="TelegramWebhookBot no maven jar plugin + no property start class + parent ${spring.version}">
+      <created>1614950942538</created>
+      <option name="number" value="00059" />
+      <option name="presentableId" value="LOCAL-00059" />
+      <option name="project" value="LOCAL" />
+      <updated>1614950942539</updated>
+    </task>
+    <option name="localTasksCounter" value="60" />
     <servers />
   </component>
   <component name="UnknownFeatures">
@@ -541,8 +541,6 @@
     <ignored-roots>
       <path value="$PROJECT_DIR$/.." />
     </ignored-roots>
-    <MESSAGE value="TelegramWebhookBot ready for Heroku trying to start11" />
-    <MESSAGE value="TelegramWebhookBot ready for Heroku trying to start12" />
     <MESSAGE value="TelegramWebhookBot getting ready" />
     <MESSAGE value="TelegramWebhookBot terget try" />
     <MESSAGE value="TelegramWebhookBot target try 1" />
@@ -566,7 +564,9 @@
     <MESSAGE value="TelegramWebhookBot no maven jar plugin" />
     <MESSAGE value="TelegramWebhookBot no maven jar plugin + no spring boot plugin" />
     <MESSAGE value="TelegramWebhookBot no maven jar plugin + no property start class" />
-    <option name="LAST_COMMIT_MESSAGE" value="TelegramWebhookBot no maven jar plugin + no property start class" />
+    <MESSAGE value="TelegramWebhookBot no maven jar plugin + no property start class + no parent" />
+    <MESSAGE value="TelegramWebhookBot no maven jar plugin + no property start class + parent ${spring.version}" />
+    <option name="LAST_COMMIT_MESSAGE" value="TelegramWebhookBot no maven jar plugin + no property start class + parent ${spring.version}" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
   <component name="XDebuggerManager">
