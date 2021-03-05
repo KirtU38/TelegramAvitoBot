@@ -12,8 +12,6 @@
         <telegrambots-version>5.0.1</telegrambots-version>
         <jsoup-version>1.13.1</jsoup-version>
         <lombok-version>1.18.18</lombok-version>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
     </properties>
 
     <parent>
