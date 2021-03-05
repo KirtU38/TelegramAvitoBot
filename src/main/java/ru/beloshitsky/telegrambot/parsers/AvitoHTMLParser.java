@@ -42,18 +42,16 @@ public class AvitoHTMLParser {
   }
 
   private Document getHTML(String URL) {
-    Document htmlDoc = null;
     log.info(URL);
+    Document htmlDoc;
 
     try {
       htmlDoc = Jsoup.connect(URL).get();
     } catch (IOException e) {
       log.error("Couldn't fetch the URL");
-      log.info(htmlDoc.toString());
       e.printStackTrace();
-      return htmlDoc;
+      return null;
     }
-
     return htmlDoc;
   }
 }
