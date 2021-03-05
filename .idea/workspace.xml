@@ -22,12 +22,7 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="642ce813-3a30-4580-8717-e0b2535895d6" name="Default Changelist" comment="TelegramWebhookBot fixing connections 1">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ru/beloshitsky/telegrambot/services/AvgPriceMessageService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/beloshitsky/telegrambot/services/AvgPriceMessageService.java" afterDir="false" />
-    </list>
+    <list default="true" id="642ce813-3a30-4580-8717-e0b2535895d6" name="Default Changelist" comment="TelegramWebhookBot no maven jar plugin + no property start class" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -166,27 +161,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1593511417901</updated>
-    </task>
-    <task id="LOCAL-00006" summary="Telegram Chat Bot Hustling">
-      <created>1613995575816</created>
-      <option name="number" value="00006" />
-      <option name="presentableId" value="LOCAL-00006" />
-      <option name="project" value="LOCAL" />
-      <updated>1613995575817</updated>
-    </task>
-    <task id="LOCAL-00007" summary="Telegram Spring stuck">
-      <created>1614164448447</created>
-      <option name="number" value="00007" />
-      <option name="presentableId" value="LOCAL-00007" />
-      <option name="project" value="LOCAL" />
-      <updated>1614164448447</updated>
-    </task>
-    <task id="LOCAL-00008" summary="Telegram Bot LongPolling">
-      <created>1614211548877</created>
-      <option name="number" value="00008" />
-      <option name="presentableId" value="LOCAL-00008" />
-      <option name="project" value="LOCAL" />
-      <updated>1614211548877</updated>
     </task>
     <task id="LOCAL-00009" summary="Telegram Bot LongPolling mapOfMessages added">
       <created>1614273661469</created>
@@ -510,7 +484,28 @@
       <option name="project" value="LOCAL" />
       <updated>1614885533095</updated>
     </task>
-    <option name="localTasksCounter" value="55" />
+    <task id="LOCAL-00055" summary="TelegramWebhookBot no maven jar plugin">
+      <created>1614950269547</created>
+      <option name="number" value="00055" />
+      <option name="presentableId" value="LOCAL-00055" />
+      <option name="project" value="LOCAL" />
+      <updated>1614950269547</updated>
+    </task>
+    <task id="LOCAL-00056" summary="TelegramWebhookBot no maven jar plugin + no spring boot plugin">
+      <created>1614950418384</created>
+      <option name="number" value="00056" />
+      <option name="presentableId" value="LOCAL-00056" />
+      <option name="project" value="LOCAL" />
+      <updated>1614950418384</updated>
+    </task>
+    <task id="LOCAL-00057" summary="TelegramWebhookBot no maven jar plugin + no property start class">
+      <created>1614950565494</created>
+      <option name="number" value="00057" />
+      <option name="presentableId" value="LOCAL-00057" />
+      <option name="project" value="LOCAL" />
+      <updated>1614950565494</updated>
+    </task>
+    <option name="localTasksCounter" value="58" />
     <servers />
   </component>
   <component name="UnknownFeatures">
@@ -546,9 +541,6 @@
     <ignored-roots>
       <path value="$PROJECT_DIR$/.." />
     </ignored-roots>
-    <MESSAGE value="TelegramWebhookBot ready for Heroku trying to start8" />
-    <MESSAGE value="TelegramWebhookBot ready for Heroku trying to start9" />
-    <MESSAGE value="TelegramWebhookBot ready for Heroku trying to start10" />
     <MESSAGE value="TelegramWebhookBot ready for Heroku trying to start11" />
     <MESSAGE value="TelegramWebhookBot ready for Heroku trying to start12" />
     <MESSAGE value="TelegramWebhookBot getting ready" />
@@ -571,7 +563,10 @@
     <MESSAGE value="TelegramWebhookBot working 4" />
     <MESSAGE value="TelegramWebhookBot working 5" />
     <MESSAGE value="TelegramWebhookBot working 6" />
-    <option name="LAST_COMMIT_MESSAGE" value="TelegramWebhookBot working 6" />
+    <MESSAGE value="TelegramWebhookBot no maven jar plugin" />
+    <MESSAGE value="TelegramWebhookBot no maven jar plugin + no spring boot plugin" />
+    <MESSAGE value="TelegramWebhookBot no maven jar plugin + no property start class" />
+    <option name="LAST_COMMIT_MESSAGE" value="TelegramWebhookBot no maven jar plugin + no property start class" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
   <component name="XDebuggerManager">
