@@ -1,4 +1,4 @@
-package ru.beloshitsky.telegrambot;
+package ru.beloshitsky.telegrambot.botapi;
 
 import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
@@ -26,6 +26,11 @@ public class Bot extends TelegramWebhookBot {
   BotConfig botConfig;
 
   @Override
+  public BotApiMethod<?> onWebhookUpdateReceived(Update update) {
+    return botService.processUpdate(update);
+  }
+
+  @Override
   public String getBotUsername() {
     return botConfig.getUserName();
   }
@@ -33,11 +38,6 @@ public class Bot extends TelegramWebhookBot {
   @Override
   public String getBotToken() {
     return botConfig.getToken();
-  }
-
-  @Override
-  public BotApiMethod<?> onWebhookUpdateReceived(Update update) {
-    return botService.processUpdate(update);
   }
 
   @Override

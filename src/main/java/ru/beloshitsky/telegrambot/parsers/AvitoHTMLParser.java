@@ -22,7 +22,8 @@ public class AvitoHTMLParser {
   BotConfig botConfig;
   AvitoTagsParser tagsParser;
 
-  public List<Double> getListOfPricesFromURL(String URLCityPageProduct) throws NullPointerException {
+  public List<Double> getListOfPricesFromURL(String URLCityPageProduct)
+      throws NullPointerException {
     Document htmlDoc = getHTML(URLCityPageProduct);
     if (htmlDoc == null) {
       return null;
@@ -48,8 +49,9 @@ public class AvitoHTMLParser {
       htmlDoc = Jsoup.connect(URL).get();
     } catch (IOException e) {
       log.error("Couldn't fetch the URL");
+      log.info(htmlDoc.toString());
       e.printStackTrace();
-      return null;
+      return htmlDoc;
     }
 
     return htmlDoc;
