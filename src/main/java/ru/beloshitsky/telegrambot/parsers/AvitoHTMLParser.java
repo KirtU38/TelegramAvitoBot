@@ -27,6 +27,9 @@ public class AvitoHTMLParser {
 
   public List<Double> getListOfPricesFromURL(String URLCityPageProduct) {
     Document htmlDoc = getHTML(URLCityPageProduct);
+    if(htmlDoc == null){
+      return null;
+    }
     Elements elementsPrices = tagsParser.selectPrices(htmlDoc);
     List<Double> listOfPricesOnPage = null;
 
@@ -41,28 +44,17 @@ public class AvitoHTMLParser {
   }
 
   private Document getHTML(String URL) {
-    Document htmlDoc = null;
+    Document htmlDoc;
     log.info(URL);
 
-    synchronized (AveragePriceMessage.class) {
-      long start = System.currentTimeMillis();
-      try {
-        htmlDoc = Jsoup.connect(URL).get();
-      } catch (IOException e) {
-        logError.error("Couldn't fetch the URL");
-        e.printStackTrace();
-      }
-      long wastedTime = System.currentTimeMillis() - start;
-      try {
-        Thread.sleep(
-            wastedTime >= botConfig.getDelayBetweenConnections()
-                ? 0
-                : botConfig.getDelayBetweenConnections() - wastedTime);
-      } catch (InterruptedException e) {
-        logError.error("Thread was interrupted");
-        e.printStackTrace();
-      }
+    try {
+      htmlDoc = Jsoup.connect(URL).get();
+    } catch (IOException e) {
+      logError.error("Couldn't fetch the URL");
+      e.printStackTrace();
+      return null;
     }
+
     return htmlDoc;
   }
 }

@@ -34,6 +34,9 @@ public class AvgPriceMessageService {
       }
       listOfPricesOnEveryPage.add(listOfPricesOnPage);
     }
+    if(listOfPricesOnEveryPage.size() == 0){
+      return 0;
+    }
     return calculateAvgPriceFromAllPages(listOfPricesOnEveryPage);
   }
 

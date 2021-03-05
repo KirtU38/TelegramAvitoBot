@@ -2,10 +2,10 @@
 <configuration status="INFO">
     <appenders>
         <Console name="console" target="SYSTEM_OUT">
-            <PatternLayout pattern="%d{HH:mm:ss} %-5level %logger{1}.%M - %msg%n"/>
+            <PatternLayout pattern="%d %-5level %logger{1}.%M: %msg%n"/>
         </Console>
         <File name="errors" fileName="logs/main.log">
-            <PatternLayout pattern="%d{HH:mm:ss} %-5level %logger{1}.%M - %msg%n"/>
+            <PatternLayout pattern="%d %-5level %logger{1}.%M: %msg%n"/>
         </File>
     </appenders>
 
