@@ -15,7 +15,6 @@
         <lombok-version>1.18.18</lombok-version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-        <start-class>ru.beloshitsky.telegrambot.Main</start-class>
     </properties>
 
     <parent>
@@ -56,6 +55,14 @@
                 <configuration>
                     <source>1.8</source>
                     <target>1.8</target>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+                <version>${spring-version}</version>
+                <configuration>
+                    <mainClass>ru.beloshitsky.telegrambot.Main</mainClass>
                 </configuration>
             </plugin>
             <plugin>
