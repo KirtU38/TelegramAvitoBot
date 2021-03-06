@@ -46,7 +46,7 @@ public class AvitoHTMLParser {
 
     try {
       long start = System.currentTimeMillis();
-      htmlDoc = Jsoup.connect(URL).get();
+      htmlDoc = Jsoup.connect(URL).userAgent("Mozilla").get();
       long wastedTime = System.currentTimeMillis() - start;
       long sleepTime = botConfig.getDelayBetweenConnections() - wastedTime;
       Thread.sleep(sleepTime < 0 ? 0 : sleepTime);
