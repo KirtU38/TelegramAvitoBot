@@ -4,13 +4,13 @@ import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
 import lombok.experimental.FieldDefaults;
 import lombok.extern.slf4j.Slf4j;
+import org.jsoup.Connection;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.select.Elements;
 import org.springframework.stereotype.Component;
 import ru.beloshitsky.telegrambot.configuration.BotConfig;
 
-import java.io.IOException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -44,11 +44,13 @@ public class AvitoHTMLParser {
 
   private Document getHTML(String URL) {
     Document htmlDoc = null;
+    Connection connection = null;
     log.info(URL);
 
     try {
       long start = System.currentTimeMillis();
-      htmlDoc = Jsoup.connect(URL).headers(getHeaders()).timeout(30000).get();
+      connection = Jsoup.connect(URL).headers(getHeaders()).timeout(30000);
+      log.info(connection.response().body());
       // log.info("Connection: " + connection.toString());
       // Connection.Response response = connection.execute();
       // log.info("Respone body" + response.body());
@@ -60,9 +62,9 @@ public class AvitoHTMLParser {
       //   long sleepTime = botConfig.getDelayBetweenConnections() - wastedTime;
       //   Thread.sleep(sleepTime < 0 ? 0 : sleepTime);
       // }
-    } catch (IOException e) {
+    } catch (Exception e) {
+      log.info(connection.response().body());
       log.error("Couldn't fetch the URL");
-      log.info(htmlDoc.toString());
       e.printStackTrace();
       return null;
     }
