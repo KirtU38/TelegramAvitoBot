@@ -24,17 +24,17 @@ public class AvgPriceMessageService {
   public double getAvgOnAllPages(String cityInEnglish, String product) {
     List<List<Double>> listOfPricesOnEveryPage = new ArrayList<>();
 
-    for (int page = 1; page <= botConfig.getPagesLimit(); page++) {
-      String URLCityPageProduct =
-          botConfig.getRootURL() + cityInEnglish + "?p=" + page + "&q=" + product;
-      List<Double> listOfPricesOnPage = avitoHTMLParser.getListOfPricesFromURL(URLCityPageProduct);
+    // for (int page = 1; page <= botConfig.getPagesLimit(); page++) {
+    String URLCityPageProduct = botConfig.getRootURL() + cityInEnglish + "?q=" + product;
+    List<Double> listOfPricesOnPage = avitoHTMLParser.getListOfPricesFromURL(URLCityPageProduct);
 
-      if (listOfPricesOnPage == null) {
-        break;
-      }
-      listOfPricesOnEveryPage.add(listOfPricesOnPage);
-    }
-    if(listOfPricesOnEveryPage.size() == 0){
+    // if (listOfPricesOnPage == null) {
+    //   break;
+    // }
+    listOfPricesOnEveryPage.add(listOfPricesOnPage);
+    // }
+
+    if (listOfPricesOnEveryPage.size() == 0) {
       return 0;
     }
     return calculateAvgPriceFromAllPages(listOfPricesOnEveryPage);
