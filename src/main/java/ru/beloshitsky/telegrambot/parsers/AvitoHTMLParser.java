@@ -11,6 +11,7 @@ import org.jsoup.select.Elements;
 import org.springframework.stereotype.Component;
 import ru.beloshitsky.telegrambot.configuration.BotConfig;
 
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -51,6 +52,7 @@ public class AvitoHTMLParser {
       long start = System.currentTimeMillis();
       response = Jsoup.connect(URL).headers(getHeaders()).timeout(30000).execute();
       log.info(response.body());
+      htmlDoc = response.parse();
       // log.info("Connection: " + connection.toString());
       // Connection.Response response = connection.execute();
       // log.info("Respone body" + response.body());
@@ -62,8 +64,7 @@ public class AvitoHTMLParser {
       //   long sleepTime = botConfig.getDelayBetweenConnections() - wastedTime;
       //   Thread.sleep(sleepTime < 0 ? 0 : sleepTime);
       // }
-    } catch (Exception e) {
-      log.info(response.body());
+    } catch (IOException e) {
       log.error("Couldn't fetch the URL");
       e.printStackTrace();
       return null;
