@@ -5,7 +5,6 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
-import org.telegram.telegrambots.bots.DefaultBotOptions;
 import org.telegram.telegrambots.meta.TelegramBotsApi;
 import org.telegram.telegrambots.meta.exceptions.TelegramApiException;
 import org.telegram.telegrambots.updatesreceivers.DefaultBotSession;
@@ -51,12 +50,13 @@ public class SpringConfig {
   public Bot bot(BotService botService, BotConfig botConfig) {
     Bot bot = null;
     try {
-      DefaultBotOptions options = new DefaultBotOptions();
-      options.setProxyType(DefaultBotOptions.ProxyType.SOCKS5);
-      options.setProxyHost(botConfig.getProxyHost());
-      options.setProxyPort(botConfig.getProxyPort());
-
-      bot = new Bot(options, botService, botConfig);
+      // DefaultBotOptions options = new DefaultBotOptions();
+      // options.setProxyType(DefaultBotOptions.ProxyType.SOCKS5);
+      // options.setProxyHost(botConfig.getProxyHost());
+      // options.setProxyPort(botConfig.getProxyPort());
+      //
+      // bot = new Bot(options, botService, botConfig);
+      bot = new Bot(botService, botConfig);
       TelegramBotsApi botsApi = new TelegramBotsApi(DefaultBotSession.class);
       botsApi.registerBot(bot);
       log.info("Bot Registered");

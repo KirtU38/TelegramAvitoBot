@@ -4,7 +4,6 @@ import lombok.AccessLevel;
 import lombok.SneakyThrows;
 import lombok.experimental.FieldDefaults;
 import lombok.extern.slf4j.Slf4j;
-import org.telegram.telegrambots.bots.DefaultBotOptions;
 import org.telegram.telegrambots.bots.TelegramLongPollingBot;
 import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
 import org.telegram.telegrambots.meta.api.objects.Update;
@@ -17,16 +16,16 @@ public class Bot extends TelegramLongPollingBot {
   BotService botService;
   BotConfig botConfig;
 
-  // public Bot(BotService botService, BotConfig botConfig) {
-  //   this.botService = botService;
-  //   this.botConfig = botConfig;
-  // }
-
-  public Bot(DefaultBotOptions options, BotService botService, BotConfig botConfig) {
-    super(options);
+  public Bot(BotService botService, BotConfig botConfig) {
     this.botService = botService;
     this.botConfig = botConfig;
   }
+
+  // public Bot(DefaultBotOptions options, BotService botService, BotConfig botConfig) {
+  //   super(options);
+  //   this.botService = botService;
+  //   this.botConfig = botConfig;
+  // }
 
   @Override
   public String getBotUsername() {
