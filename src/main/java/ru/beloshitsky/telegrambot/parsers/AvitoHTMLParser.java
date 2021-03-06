@@ -44,13 +44,13 @@ public class AvitoHTMLParser {
 
   private Document getHTML(String URL) {
     Document htmlDoc = null;
-    Connection connection = null;
+    Connection.Response response = null;
     log.info(URL);
 
     try {
       long start = System.currentTimeMillis();
-      connection = Jsoup.connect(URL).headers(getHeaders()).timeout(30000);
-      log.info(connection.response().body());
+      response = Jsoup.connect(URL).headers(getHeaders()).timeout(30000).execute();
+      log.info(response.body());
       // log.info("Connection: " + connection.toString());
       // Connection.Response response = connection.execute();
       // log.info("Respone body" + response.body());
@@ -63,7 +63,7 @@ public class AvitoHTMLParser {
       //   Thread.sleep(sleepTime < 0 ? 0 : sleepTime);
       // }
     } catch (Exception e) {
-      log.info(connection.response().body());
+      log.info(response.body());
       log.error("Couldn't fetch the URL");
       e.printStackTrace();
       return null;
