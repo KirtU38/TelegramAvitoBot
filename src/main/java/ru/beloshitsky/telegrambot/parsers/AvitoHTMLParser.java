@@ -51,6 +51,7 @@ public class AvitoHTMLParser {
           Jsoup.connect(URL)
               .userAgent(botConfig.getUserAgent())
               .referrer(botConfig.getReferrer())
+              .followRedirects(true)
               .timeout(30000);
       log.info("Connection: " + connection.toString());
       Connection.Response response = connection.execute();
