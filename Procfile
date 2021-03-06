@@ -1,1 +1,1 @@
-worker: -Dhttps.protocols=TLSv1.1,TLSv1.2 sh target/bin/telegramBot
+worker: sh target/bin/telegramBot
