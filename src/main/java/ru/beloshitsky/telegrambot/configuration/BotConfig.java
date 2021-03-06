@@ -32,9 +32,9 @@ public class BotConfig {
   @Value("${telegrambot.rootURL}")
   String rootURL;
 
-  @Value("${proxy.host}")
-  String proxyHost;
+  @Value("${telegrambot.userAgent}")
+  String userAgent;
 
-  @Value("${proxy.port}")
-  int proxyPort;
+  @Value("${telegrambot.referrer}")
+  String referrer;
 }

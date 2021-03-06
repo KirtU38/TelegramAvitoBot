@@ -4,6 +4,7 @@ import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
 import lombok.experimental.FieldDefaults;
 import lombok.extern.slf4j.Slf4j;
+import org.jsoup.Connection;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.select.Elements;
@@ -41,28 +42,32 @@ public class AvitoHTMLParser {
   }
 
   private Document getHTML(String URL) {
-    Document htmlDoc;
+    Document htmlDoc = null;
     log.info(URL);
 
     try {
       long start = System.currentTimeMillis();
-      htmlDoc =
+      Connection connection =
           Jsoup.connect(URL)
-              .userAgent(
-                  "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.77 Safari/537.36")
-              .referrer("http://www.google.com")
-              .get();
-      long wastedTime = System.currentTimeMillis() - start;
-      long sleepTime = botConfig.getDelayBetweenConnections() - wastedTime;
-      Thread.sleep(sleepTime < 0 ? 0 : sleepTime);
-      System.out.println(wastedTime + " " + sleepTime);
-      log.info(String.valueOf(htmlDoc == null));
+              .userAgent(botConfig.getUserAgent())
+              .referrer(botConfig.getReferrer())
+              .timeout(30000);
+      log.info("Connection: " + connection.toString());
+      Connection.Response response = connection.execute();
+      log.info("Respone body" + response.body());
+      int status = response.statusCode();
+      log.info("status code" + String.valueOf(response));
+      if (status == 200) {
+        htmlDoc = connection.get();
+        long wastedTime = System.currentTimeMillis() - start;
+        long sleepTime = botConfig.getDelayBetweenConnections() - wastedTime;
+        Thread.sleep(sleepTime < 0 ? 0 : sleepTime);
+      }
     } catch (IOException | InterruptedException e) {
       log.error("Couldn't fetch the URL");
       e.printStackTrace();
       return null;
     }
-
     return htmlDoc;
   }
 }
