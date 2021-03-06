@@ -56,7 +56,7 @@ public class AvitoHTMLParser {
       long sleepTime = botConfig.getDelayBetweenConnections() - wastedTime;
       Thread.sleep(sleepTime < 0 ? 0 : sleepTime);
       System.out.println(wastedTime + " " + sleepTime);
-      log.info(htmlDoc.toString());
+      log.info(String.valueOf(htmlDoc == null));
     } catch (IOException | InterruptedException e) {
       log.error("Couldn't fetch the URL");
       e.printStackTrace();
