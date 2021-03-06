@@ -47,7 +47,7 @@ public class AvitoHTMLParser {
     try {
       long start = System.currentTimeMillis();
       htmlDoc =
-          Jsoup.connect(URL)
+          Jsoup.connect("https://www.google.com/")
               .userAgent(
                   "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/89.0.4389.82 Safari/537.36")
               .timeout(10000)
@@ -56,6 +56,7 @@ public class AvitoHTMLParser {
       long sleepTime = botConfig.getDelayBetweenConnections() - wastedTime;
       Thread.sleep(sleepTime < 0 ? 0 : sleepTime);
       System.out.println(wastedTime + " " + sleepTime);
+      log.info(htmlDoc.toString());
     } catch (IOException | InterruptedException e) {
       log.error("Couldn't fetch the URL");
       e.printStackTrace();
