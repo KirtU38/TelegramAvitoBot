@@ -10,7 +10,6 @@ public class HelpMessage implements Message {
 
     @Override
     public SendMessage getMessage(String text, String chatId) {
-        log.info("text: {}, chat_id: {}", text, chatId);
         SendMessage message = new SendMessage();
         message.setChatId(chatId);
         message.setText("Введите город, потом товар, например:\nПитер iphone 12 pro max");

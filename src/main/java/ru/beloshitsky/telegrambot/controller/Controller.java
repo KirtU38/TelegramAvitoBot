@@ -20,11 +20,6 @@ public class Controller {
 
   @PostMapping("/")
   public BotApiMethod<?> receiveUpdate(@RequestBody Update update) throws Exception {
-    log.info(
-        "Controller: {}, {}",
-        update.getMessage().getText(),
-        update.getMessage().getFrom().getFirstName());
-
     return bot.onWebhookUpdateReceived(update);
   }
 }

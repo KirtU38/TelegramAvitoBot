@@ -47,11 +47,9 @@ public class AvgPriceMessageService {
             .filter(list -> list != null)
             .flatMap(Collection::stream)
             .collect(Collectors.toList());
-    log.info("numberOfPrices: {}", listOfPricesFromAllPages.size());
 
     double averagePriceCommon =
         listOfPricesFromAllPages.stream().mapToDouble(e -> e).average().getAsDouble();
-    log.info("averagePriceCommon: {}", averagePriceCommon);
 
     double deletionThreshold = (averagePriceCommon / 100) * botConfig.getPriceThreshold();
     double averagePriceFiltered =
@@ -60,7 +58,6 @@ public class AvgPriceMessageService {
             .mapToDouble(p -> p)
             .average()
             .getAsDouble();
-    log.info("averagePriceFiltered: {}", averagePriceFiltered);
 
     return averagePriceFiltered;
   }

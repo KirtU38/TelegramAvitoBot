@@ -2,6 +2,7 @@ package ru.beloshitsky.telegrambot.configuration;
 
 import org.springframework.boot.SpringBootConfiguration;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.EnableAspectJAutoProxy;
 import ru.beloshitsky.telegrambot.messages.Message;
 
 import java.io.IOException;
@@ -13,6 +14,7 @@ import java.util.Map;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 
+@EnableAspectJAutoProxy
 @SpringBootConfiguration
 public class SpringConfig {
 

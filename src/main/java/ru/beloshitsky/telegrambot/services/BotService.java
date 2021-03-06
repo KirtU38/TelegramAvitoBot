@@ -34,7 +34,6 @@ public class BotService {
         command = "найти среднюю цену";
       }
 
-      log.info("text: {}, chat_id: {}, command: {}", text, chatId, command);
       message = mapOfMessages.getOrDefault(command, mapOfMessages.get("ошибка")).getMessage(text, chatId);
     }
     return message;
