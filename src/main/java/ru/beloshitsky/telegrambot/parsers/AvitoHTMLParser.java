@@ -72,7 +72,6 @@ public class AvitoHTMLParser {
   private Map<String, String> getHeaders() {
     Map<String, String> headers = new HashMap<>();
     headers.put(":authority", "www.avito.ru");
-    headers.put(":method", "GET");
     headers.put(":scheme", "https");
     headers.put(
         "accept",
