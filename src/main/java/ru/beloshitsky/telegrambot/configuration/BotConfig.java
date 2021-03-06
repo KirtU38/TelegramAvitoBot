@@ -1,10 +1,13 @@
 package ru.beloshitsky.telegrambot.configuration;
 
+import lombok.AccessLevel;
 import lombok.Getter;
+import lombok.experimental.FieldDefaults;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
 @Getter
+@FieldDefaults(level = AccessLevel.PRIVATE)
 @Component
 public class BotConfig {
 
@@ -28,4 +31,10 @@ public class BotConfig {
 
   @Value("${telegrambot.rootURL}")
   String rootURL;
+
+  @Value("${proxy.host}")
+  String proxyHost;
+
+  @Value("${proxy.port}")
+  int proxyPort;
 }

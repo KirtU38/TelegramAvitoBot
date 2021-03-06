@@ -1,13 +1,17 @@
 package ru.beloshitsky.telegrambot.configuration;
 
 import lombok.extern.slf4j.Slf4j;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
+import org.telegram.telegrambots.bots.DefaultBotOptions;
+import org.telegram.telegrambots.meta.TelegramBotsApi;
+import org.telegram.telegrambots.meta.exceptions.TelegramApiException;
+import org.telegram.telegrambots.updatesreceivers.DefaultBotSession;
+import ru.beloshitsky.telegrambot.botapi.Bot;
 import ru.beloshitsky.telegrambot.messages.Message;
+import ru.beloshitsky.telegrambot.services.BotService;
 
 import java.io.IOException;
 import java.nio.file.Files;
@@ -44,7 +48,22 @@ public class SpringConfig {
   }
 
   @Bean
-  public Logger logError() {
-    return LoggerFactory.getLogger("errorLogger");
+  public Bot bot(BotService botService, BotConfig botConfig) {
+    Bot bot = null;
+    try {
+      DefaultBotOptions options = new DefaultBotOptions();
+      options.setProxyType(DefaultBotOptions.ProxyType.SOCKS5);
+      options.setProxyHost(botConfig.getProxyHost());
+      options.setProxyPort(botConfig.getProxyPort());
+
+      bot = new Bot(options, botService, botConfig);
+      TelegramBotsApi botsApi = new TelegramBotsApi(DefaultBotSession.class);
+      botsApi.registerBot(bot);
+      log.info("Bot Registered");
+    } catch (TelegramApiException e) {
+      log.error("Couldn't register a Bot");
+      e.printStackTrace();
+    }
+    return bot;
   }
 }
