@@ -1,0 +1,1 @@
+bot: java -jar target/*.jar
