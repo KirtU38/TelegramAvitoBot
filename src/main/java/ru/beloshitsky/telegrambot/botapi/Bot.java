@@ -50,6 +50,7 @@ public class Bot extends TelegramWebhookBot {
     try {
       TelegramBotsApi api = new TelegramBotsApi(DefaultBotSession.class);
       api.registerBot(this, new SetWebhook(botConfig.getWebHookPath()));
+      log.info("Bot Registered");
     } catch (TelegramApiException e) {
       log.error("Couldn't register a Bot");
       e.printStackTrace();
