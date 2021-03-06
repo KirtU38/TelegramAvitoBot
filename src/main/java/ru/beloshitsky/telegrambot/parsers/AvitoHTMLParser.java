@@ -4,7 +4,6 @@ import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
 import lombok.experimental.FieldDefaults;
 import lombok.extern.slf4j.Slf4j;
-import org.jsoup.Connection;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.select.Elements;
@@ -45,14 +44,11 @@ public class AvitoHTMLParser {
 
   private Document getHTML(String URL) {
     Document htmlDoc = null;
-    Connection.Response response = null;
     log.info(URL);
 
     try {
       long start = System.currentTimeMillis();
-      response = Jsoup.connect(URL).headers(getHeaders()).timeout(30000).execute();
-      log.info(response.body());
-      htmlDoc = response.parse();
+      htmlDoc = Jsoup.connect(URL).headers(getHeaders()).timeout(30000).get();
       // log.info("Connection: " + connection.toString());
       // Connection.Response response = connection.execute();
       // log.info("Respone body" + response.body());
