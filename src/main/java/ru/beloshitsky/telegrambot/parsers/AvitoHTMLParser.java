@@ -4,7 +4,6 @@ import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
 import lombok.experimental.FieldDefaults;
 import lombok.extern.slf4j.Slf4j;
-import org.jsoup.Connection;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.select.Elements;
@@ -49,20 +48,21 @@ public class AvitoHTMLParser {
 
     try {
       long start = System.currentTimeMillis();
-      Connection connection = Jsoup.connect(URL).headers(getHeaders()).timeout(30000);
-      log.info("Connection: " + connection.toString());
-      Connection.Response response = connection.execute();
-      log.info("Respone body" + response.body());
-      int status = response.statusCode();
-      log.info("status code" + String.valueOf(response));
-      if (status == 200) {
-        htmlDoc = connection.get();
-        long wastedTime = System.currentTimeMillis() - start;
-        long sleepTime = botConfig.getDelayBetweenConnections() - wastedTime;
-        Thread.sleep(sleepTime < 0 ? 0 : sleepTime);
-      }
-    } catch (IOException | InterruptedException e) {
+      htmlDoc = Jsoup.connect(URL).headers(getHeaders()).timeout(30000).get();
+      // log.info("Connection: " + connection.toString());
+      // Connection.Response response = connection.execute();
+      // log.info("Respone body" + response.body());
+      // int status = response.statusCode();
+      // log.info("status code" + String.valueOf(response));
+      // if (status == 200) {
+      //   htmlDoc = connection.get();
+      //   long wastedTime = System.currentTimeMillis() - start;
+      //   long sleepTime = botConfig.getDelayBetweenConnections() - wastedTime;
+      //   Thread.sleep(sleepTime < 0 ? 0 : sleepTime);
+      // }
+    } catch (IOException e) {
       log.error("Couldn't fetch the URL");
+      log.info(htmlDoc.toString());
       e.printStackTrace();
       return null;
     }
@@ -71,8 +71,9 @@ public class AvitoHTMLParser {
 
   private Map<String, String> getHeaders() {
     Map<String, String> headers = new HashMap<>();
-    headers.put(":authority", "www.avito.ru");
-    headers.put(":scheme", "https");
+    headers.put("authority", "www.avito.ru");
+    headers.put("method", "GET");
+    headers.put("scheme", "https");
     headers.put(
         "accept",
         "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9");
