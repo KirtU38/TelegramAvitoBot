@@ -1,4 +1,4 @@
-package ru.beloshitsky.telegrambot.messages;
+package ru.beloshitsky.telegrambot.keyboard;
 
 import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
