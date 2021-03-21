@@ -1,12 +1,12 @@
 package ru.beloshitsky.telegrambot;
 
+import lombok.extern.slf4j.Slf4j;
 import org.assertj.core.util.Arrays;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.junit.Before;
 import org.junit.Test;
 import org.mockito.Mockito;
-import org.slf4j.Logger;
 import ru.beloshitsky.telegrambot.configuration.BotConfig;
 import ru.beloshitsky.telegrambot.parsers.AvitoHTMLParser;
 import ru.beloshitsky.telegrambot.parsers.AvitoTagsParser;
@@ -17,18 +17,18 @@ import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
+@Slf4j
 public class AvitoHTMLParserTest {
   private AvitoHTMLParser avitoHTMLParser;
-  Logger log;
+  
   BotConfig botConfig;
   AvitoTagsParser avitoTagsParser;
 
   @Before
   public void init() {
-    log = Mockito.mock(Logger.class);
     botConfig = Mockito.mock(BotConfig.class);
     avitoTagsParser = new AvitoTagsParser();
-    avitoHTMLParser = new AvitoHTMLParser(log, botConfig, avitoTagsParser);
+    avitoHTMLParser = new AvitoHTMLParser(botConfig, avitoTagsParser);
   }
 
   @Test

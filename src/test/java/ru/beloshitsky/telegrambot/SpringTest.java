@@ -6,10 +6,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
-import ru.beloshitsky.telegrambot.keyboard.KeyboardMarkup;
 import ru.beloshitsky.telegrambot.messages.HelpMessage;
 import ru.beloshitsky.telegrambot.messages.StartMessage;
 import ru.beloshitsky.telegrambot.messages.WrongCommandMessage;
+import ru.beloshitsky.telegrambot.util.KeyboardMarkup;
 
 import static org.assertj.core.api.Assertions.assertThat;
 

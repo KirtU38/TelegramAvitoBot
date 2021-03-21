@@ -4,6 +4,7 @@ import lombok.AccessLevel;
 import lombok.experimental.FieldDefaults;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
+import ru.beloshitsky.telegrambot.advices.annotations.LogArgsAndRetval;
 
 import java.util.HashMap;
 import java.util.Locale;
@@ -12,12 +13,14 @@ import java.util.Map;
 @FieldDefaults(level = AccessLevel.PRIVATE, makeFinal = true)
 @Component
 public class InputParser {
+  
   Map<String, String> mapOfCities;
 
   public InputParser(@Qualifier("mapOfCities") Map<String, String> mapOfCities) {
     this.mapOfCities = mapOfCities;
   }
 
+  @LogArgsAndRetval
   public Map<String, String> getParsedInput(String text) {
     HashMap<String, String> parsedInput = null;
     String[] tokens = text.toLowerCase(Locale.ROOT).trim().split("\\s");

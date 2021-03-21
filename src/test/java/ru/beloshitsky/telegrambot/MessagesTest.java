@@ -5,10 +5,10 @@ import org.junit.Test;
 import org.mockito.Mockito;
 import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
 import ru.beloshitsky.telegrambot.configuration.BotConfig;
-import ru.beloshitsky.telegrambot.keyboard.KeyboardMarkup;
 import ru.beloshitsky.telegrambot.messages.HelpMessage;
 import ru.beloshitsky.telegrambot.messages.StartMessage;
 import ru.beloshitsky.telegrambot.messages.WrongCommandMessage;
+import ru.beloshitsky.telegrambot.util.KeyboardMarkup;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
