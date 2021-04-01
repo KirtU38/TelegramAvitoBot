@@ -16,6 +16,7 @@ import java.util.Map;
 @FieldDefaults(level = AccessLevel.PRIVATE, makeFinal = true)
 @Service
 public class BotService {
+  
   Map<String, Message> mapOfMessages;
 
   public BotService(@Qualifier("mapOfMessages") Map<String, Message> mapOfMessages) {
@@ -35,7 +36,7 @@ public class BotService {
       }
 
       log.info("text: {}, chat_id: {}, command: {}", text, chatId, command);
-      message = mapOfMessages.get(command).getMessage(text, chatId);
+      message = mapOfMessages.getOrDefault(command, mapOfMessages.get("помощь")).getMessage(text, chatId);
     }
     return message;
   }
