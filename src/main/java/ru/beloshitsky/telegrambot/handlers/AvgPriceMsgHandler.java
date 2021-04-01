@@ -9,7 +9,7 @@ import ru.beloshitsky.telegrambot.advices.annotations.LogArgsAndRetval;
 import ru.beloshitsky.telegrambot.configuration.BotConfig;
 import ru.beloshitsky.telegrambot.parsers.AvitoHTMLParser;
 import ru.beloshitsky.telegrambot.parsers.InputParser;
-import ru.beloshitsky.telegrambot.services.AvgPriceCalculator;
+import ru.beloshitsky.telegrambot.util.AvgPriceCalculator;
 import ru.beloshitsky.telegrambot.util.KeyboardMarkup;
 
 import java.util.ArrayList;

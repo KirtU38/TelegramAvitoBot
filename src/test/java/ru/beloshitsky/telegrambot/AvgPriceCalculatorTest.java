@@ -4,7 +4,7 @@ import org.junit.Before;
 import org.junit.Test;
 import org.mockito.Mockito;
 import ru.beloshitsky.telegrambot.configuration.BotConfig;
-import ru.beloshitsky.telegrambot.services.AvgPriceCalculator;
+import ru.beloshitsky.telegrambot.util.AvgPriceCalculator;
 
 import java.io.IOException;
 import java.util.ArrayList;

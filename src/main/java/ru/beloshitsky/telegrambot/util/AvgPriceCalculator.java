@@ -1,4 +1,4 @@
-package ru.beloshitsky.telegrambot.services;
+package ru.beloshitsky.telegrambot.util;
 
 import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
