@@ -4,7 +4,6 @@ import org.junit.Before;
 import org.junit.Test;
 import org.mockito.Mockito;
 import ru.beloshitsky.telegrambot.configuration.BotConfig;
-import ru.beloshitsky.telegrambot.parsers.AvitoHTMLParser;
 import ru.beloshitsky.telegrambot.services.AvgPriceCalculator;
 
 import java.io.IOException;
@@ -16,14 +15,12 @@ import static org.assertj.core.api.Assertions.assertThat;
 public class AvgPriceCalculatorTest {
 
   BotConfig botConfig;
-  AvitoHTMLParser avitoHTMLParser;
   AvgPriceCalculator avgPriceCalculator;
 
   @Before
   public void init() {
     botConfig = Mockito.mock(BotConfig.class);
-    avitoHTMLParser = Mockito.mock(AvitoHTMLParser.class);
-    avgPriceCalculator = new AvgPriceCalculator(botConfig, avitoHTMLParser);
+    avgPriceCalculator = new AvgPriceCalculator(botConfig);
   }
 
   @Test
@@ -58,7 +55,7 @@ public class AvgPriceCalculatorTest {
     listOfAllPrices.add(pricesFromPage2);
 
     double expected = 19512.5;
-    double result = avgPriceCalculator.avgPriceFromAllPages(listOfAllPrices);
+    double result = avgPriceCalculator.calculateAvgPrice(listOfAllPrices);
     assertThat(result).isEqualTo(expected);
   }
 }

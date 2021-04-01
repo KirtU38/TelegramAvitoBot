@@ -6,7 +6,7 @@ import lombok.experimental.FieldDefaults;
 import org.springframework.stereotype.Component;
 import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
 import ru.beloshitsky.telegrambot.advices.annotations.LogArgs;
-import ru.beloshitsky.telegrambot.messages.handlers.AvgPriceMsgHandler;
+import ru.beloshitsky.telegrambot.handlers.AvgPriceMsgHandler;
 
 @RequiredArgsConstructor
 @FieldDefaults(level = AccessLevel.PRIVATE, makeFinal = true)
