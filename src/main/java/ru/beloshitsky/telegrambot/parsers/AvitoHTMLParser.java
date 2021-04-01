@@ -19,6 +19,7 @@ import java.util.stream.Collectors;
 @FieldDefaults(level = AccessLevel.PRIVATE, makeFinal = true)
 @Component
 public class AvitoHTMLParser {
+
   BotConfig botConfig;
   AvitoTagsParser tagsParser;
 
@@ -27,6 +28,10 @@ public class AvitoHTMLParser {
     if (htmlDoc == null) {
       return null;
     }
+    return parseHTMLToListOfPrices(htmlDoc);
+  }
+
+  public List<Double> parseHTMLToListOfPrices(Document htmlDoc) {
     Elements elementsPrices = tagsParser.selectPrices(htmlDoc);
     List<Double> listOfPricesOnPage = null;
 
@@ -41,21 +46,17 @@ public class AvitoHTMLParser {
   }
 
   private Document getHTML(String URL) {
-    Document htmlDoc = null;
-    log.info(URL);
-
+    log.info("URL: {}", URL);
+    Document htmlDoc;
     try {
-      long start = System.currentTimeMillis();
       htmlDoc =
           Jsoup.connect(URL)
-              .userAgent(botConfig.getUserAgent())
-              .referrer(botConfig.getReferrer())
-              .timeout(30000)
+              .userAgent(
+                  "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 "
+                      + "(KHTML, like Gecko) Chrome/70.0.3538.77 Safari/537.36")
+              .referrer("https://www.google.com")
               .get();
-      long wastedTime = System.currentTimeMillis() - start;
-      long sleepTime = botConfig.getDelayBetweenConnections() - wastedTime;
-      Thread.sleep(sleepTime < 0 ? 0 : sleepTime);
-    } catch (IOException | InterruptedException e) {
+    } catch (IOException e) {
       log.error("Couldn't fetch the URL");
       e.printStackTrace();
       return null;

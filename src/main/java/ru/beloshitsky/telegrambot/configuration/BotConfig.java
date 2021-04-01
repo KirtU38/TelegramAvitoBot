@@ -31,10 +31,4 @@ public class BotConfig {
 
   @Value("${telegrambot.rootURL}")
   String rootURL;
-
-  @Value("${telegrambot.userAgent}")
-  String userAgent;
-
-  @Value("${telegrambot.referrer}")
-  String referrer;
 }

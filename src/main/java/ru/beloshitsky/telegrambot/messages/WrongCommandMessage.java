@@ -12,19 +12,19 @@ import ru.beloshitsky.telegrambot.util.KeyboardMarkup;
 @RequiredArgsConstructor
 @FieldDefaults(level = AccessLevel.PRIVATE, makeFinal = true)
 @Component
-public class HelpMessage implements Message {
+public class WrongCommandMessage implements Message {
+    
+    KeyboardMarkup keyboardMarkup;
 
-  KeyboardMarkup keyboardMarkup;
+    @Override
+    public void generateMessage(SendMessage message, String text) {
+        log.info("text: {}", text);
+        message.setText("Неверная команда");
+        message.setReplyMarkup(keyboardMarkup.getHelpButtonMarkup());
+    }
 
-  @Override
-  public void generateMessage(SendMessage message, String text) {
-    log.info("text: {}", text);
-    message.setText("Введите город, потом товар, например:\nПитер iphone 12 pro max");
-    message.setReplyMarkup(keyboardMarkup.getHelpButtonMarkup());
-  }
-
-  @Override
-  public String getId() {
-    return "помощь";
-  }
+    @Override
+    public String getId() {
+        return "ошибка";
+    }
 }

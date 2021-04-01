@@ -11,10 +11,11 @@ import java.util.Map;
 
 @FieldDefaults(level = AccessLevel.PRIVATE, makeFinal = true)
 @Component
-public class InputParses {
+public class InputParser {
+  
   Map<String, String> mapOfCities;
 
-  public InputParses(@Qualifier("mapOfCities") Map<String, String> mapOfCities) {
+  public InputParser(@Qualifier("mapOfCities") Map<String, String> mapOfCities) {
     this.mapOfCities = mapOfCities;
   }
 

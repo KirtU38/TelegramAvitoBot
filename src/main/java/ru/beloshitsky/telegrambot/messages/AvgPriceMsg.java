@@ -6,28 +6,24 @@ import lombok.experimental.FieldDefaults;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
 import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
-import ru.beloshitsky.telegrambot.util.KeyboardMarkup;
+import ru.beloshitsky.telegrambot.handlers.AvgPriceMsgHandler;
 
 @Slf4j
 @RequiredArgsConstructor
 @FieldDefaults(level = AccessLevel.PRIVATE, makeFinal = true)
 @Component
-public class StartMessage implements Message {
+public class AvgPriceMsg implements Message {
   
-  KeyboardMarkup keyboardMarkup;
-
-  @Override
+  AvgPriceMsgHandler avgPriceMsgHandler;
+  
   public void generateMessage(SendMessage message, String text) {
     log.info("text: {}", text);
-    message.setText(
-        "Привет! Чтобы узнать среднюю ценю любого товара на Avito, "
-            + "просто введи Город, а потом Товар:\n"
-            + "Питер Samsung Galaxy S20");
-    message.setReplyMarkup(keyboardMarkup.getHelpButtonMarkup());
+    String answer = avgPriceMsgHandler.handeMessage(message, text);
+    message.setText(answer);
   }
 
   @Override
   public String getId() {
-    return "/start";
+    return "найти среднюю цену";
   }
 }

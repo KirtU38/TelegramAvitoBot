@@ -33,14 +33,12 @@ public class SpringConfig {
               String[] tokens = e.split("=", 2);
               mapOfCities.put(tokens[0], tokens[1]);
             });
-    System.out.println(mapOfCities);
     return mapOfCities;
   }
 
   @Bean("mapOfMessages")
   public Map<String, Message> mapOfMessages(List<Message> listOfMessages) {
     Map<String, Message> collect = listOfMessages.stream().collect(Collectors.toMap(Message::getId, Function.identity()));
-    System.out.println(collect);
     return collect;
   }
 }
